@@ -8,7 +8,7 @@ const registerRoutes = require('./routes/register')
 
 app.use(bodyParser.urlencoded({extended:false}))
 
-
+app.use(registerRoutes);
 
 app.use('/', (req, res,) => {
     res.send('<h1> Hello fra Express<h1>')

@@ -1,9 +1,10 @@
 const express = require('express');
+const path = require('path');
 
 const router = express.Router();
 
 router.get('/register', (req, res, next) => {
-    res.sendFile(path.resolve(__dirname,'veiws/register.html'));
+    res.sendFile(path.resolve(__dirname,'/Users/metinyucel/Desktop/Progeksamen2021/Progeksamen2021/veiws/register.html'));
     });
 
 router.post('/users/regiser', (req, res ) => {
@@ -11,4 +12,4 @@ router.post('/users/regiser', (req, res ) => {
     res.redirect('/');
     });
     
-module.exports = router
+module.exports = router;
