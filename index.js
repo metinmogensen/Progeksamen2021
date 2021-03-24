@@ -5,14 +5,14 @@ const bodyParser = require('body-parser');
 const app = express() 
 
 const registerRoutes = require('./routes/register')
+const Homepage = require('./routes/Homepage')
 
 app.use(bodyParser.urlencoded({extended:false}))
 
 app.use(registerRoutes);
 
-app.use('/', (req, res,) => {
-    res.send('<h1> Hello fra Express<h1>')
-    });
-    
+app.use(Homepage);
+
+
 app.listen(3000)
 
