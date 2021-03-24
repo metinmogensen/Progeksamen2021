@@ -10,14 +10,13 @@ app.use('/register', (req, res, next) => {
     res.sendFile(path.resolve(__dirname,'veiws/register.html'));
     });
 
-app.use('/users/regiser', (req, res ) => {
-    console.log('Hello');
+app.post('/users/regiser', (req, res ) => {
+    console.log(req.body);
     res.redirect('/');
     });
     
 
 app.use('/', (req, res,) => {
-    console.log('Startside')
     res.send('<h1> Hello fra Express<h1>')
     });
     
