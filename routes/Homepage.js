@@ -4,7 +4,7 @@ const path = require('path');
 
 
 router.get('/', (req, res,) => {
-    res.sendFile(path.resolve(__dirname,'/Users/metinyucel/Desktop/Progeksamen2021/Progeksamen2021/veiws/homepage.html'))
+    res.sendFile(path.resolve(__dirname,'..','veiws','homepage.html'));
     });
     
 module.exports = router; 
