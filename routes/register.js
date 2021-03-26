@@ -1,10 +1,11 @@
 const express = require('express');
 const path = require('path');
+const users = [];
 
 const router = express.Router();
 
 router.post('/posttest', (req, res ) => {
-    console.log(req.body);
+    users.push({ username: req.body.username, password: req.body.password});
      res.redirect('/');
      });
 
@@ -14,4 +15,5 @@ router.get('/register', (req, res) => {
     });
 
 
-module.exports = router;
+exports.routes = router;
+exports.users = users;

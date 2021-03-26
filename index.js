@@ -4,12 +4,12 @@ const bodyParser = require('body-parser');
 
 const app = express() 
 
-const registerRoutes = require('./routes/register')
+const registerData = require('./routes/register')
 const Homepage = require('./routes/Homepage')
 
 app.use(bodyParser.urlencoded({extended:false}))
 
-app.use(registerRoutes);
+app.use(registerData.routes);
 
 app.use(Homepage);
 
