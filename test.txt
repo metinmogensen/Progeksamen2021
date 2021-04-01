@@ -1,2 +1,7 @@
 Kan i læse denne txt?
 eller den her
+
+navn:
+servermanager
+kode:
+Mikkel0902
