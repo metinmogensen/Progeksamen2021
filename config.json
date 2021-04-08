@@ -1,0 +1,15 @@
+{  
+    "server": "datingserver007.database.windows.net", 
+    "authentication": {
+        "type": "default",
+        "options": {
+            "userName": "servermanager", 
+            "password": "Mikkel0902" 
+        }
+    },
+    "options": {
+        "encrypt": true,
+        "database": "Progeksamen"
+    }
+}
+
