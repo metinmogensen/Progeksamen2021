@@ -1,13 +1,54 @@
 module.exports = async function (context, req) {
     context.log('JavaScript HTTP trigger function processed a request.');
 
-    const name = (req.query.name || (req.body && req.body.name));
-    const responseMessage = name
-        ? "Hello, " + name + ". This HTTP triggered function executed successfully."
-        : "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response.";
+    try{
+        await db.startDb(); //start db forbbindelse
+    } catch (error) {
+        console.log("Error connecting to the database", error
+        .message);
+    }
+    switch(req.method) {
+        case 'GET':
+            await get(context, req);
+            break;
+            case 'POST':
+                await post(context, req);
+                break
+                default:
+                    context.res = {
+                        body:"please get or post"
+                    };
+                    break
+    }
+}
 
-    context.res = {
-        // status: 200, /* Defaults to 200 */
-        body: responseMessage
-    };
+async function get(context, req){
+    try{
+        let firstName = req.query.firstName;
+        let user = await db.select(firstName)
+        context.res = {
+            body: user
+        };
+    } catch(error){
+        context.res = {
+            status: 400,
+            body:`No user ${error.message}`
+        }
+    }
+}
+
+async function post(context, req){
+    try{
+        let payload = req.body;
+        await db.incert(payload);
+        context.res = {
+            body: {status:"Det virker"}
+        }
+    }catch(error){
+        context.res = {
+            status: 400,
+            body: error.message
+        }
+
+    }
 }
