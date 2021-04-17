@@ -9,5 +9,5 @@ form.addEventListener("submit", function(e) {
     var country = document.getElementById("country").value
     var birthdate = document.getElementById("birthdate").value
 
-    fetch("")
+    fetch("http://localhost:7071/api/HttpTrigger1")
 })
