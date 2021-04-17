@@ -1,55 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-
-     <!-- Page Header -->
-  <header class="masthead" >
-    <div class="overlay"></div>
-    <div class="container">
+<div id="app">
+  <div class="container">
+    <form>
       <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="page-heading">
-            <h1>Register new account</h1>
-            <span class="subheading">Register a new account.</span>
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+          <!-- Exercise 1 -->
+          <!-- Create a Signup Form where you retrieve the following Information -->
+          <!-- Full Name (First Name + Last Name) -->
+          <!-- Mail -->
+          <!-- Password -->
+          <!-- Store Data? Yes/No -->
+          <h1>Signup</h1>
+          <hr>
+          <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" class="form-control" v-model="userData.firstName">
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" class="form-control" v-model="userData.lastName">
+          </div>
+          <div class="form-group">
+            <label for="email">Mail</label>
+            <input type="text" id="email" class="form-control" v-model="userData.email">
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" class="form-control" v-model="userData.password">
+            <p>
+              {{ userData.password }}
+            </p>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 form-group">
+              <label for="yes">
+                <input type="radio" id="yes" value="Yes" v-model="storeData"> Yes
+              </label>
+              <label for="no">
+                <input type="radio" id="no" value="No" v-model="storeData"> No
+              </label>
+            </div>
+          </div>
+
+          <!-- Exercise 2 -->
+          <!-- Only display the Form if it has NOT been submitted -->
+          <!-- Display the Data Summary ONCE the Form HAS been submitted -->
+
+          <!-- Exercise 3 -->
+          <!-- Edit the Example from above and create a custom "Full Name" Control -->
+          <!-- which still holds the First Name and Last Name Input Field -->
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+          <button class="btn btn-primary" @click.prevent="submitted">Submit!
+          </button>
+        </div>
+      </div>
+    </form>
+    <hr>
+    <div class="row" v-if="isSubmitted">
+      <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4>Your Data</h4>
+          </div>
+          <div class="panel-body">
+            <p>Full Name: {{ userData.firstName }} {{ userData.lastName }}</p>
+            <p>Mail: {{ userData.email }}</p>
+            <p>Password: {{ userData.password }}</p>
+            <p>Store in Database?: {{ storeData }}</p>
           </div>
         </div>
       </div>
     </div>
-  </header>
-
-  <!-- Main Content -->
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <form action="/posttest" method="post" >
-          <div class="control-group"></div>
-            <div class="form-group floating-label-form-group controls">
-              <label>Username</label>
-              <input type="text" class="form-control" placeholder="username" id="username" name="username">
-            </div>
-          </div>
-          <div class="control-group">
-            <div class="form-group floating-label-form-group controls">
-              <label>password</label>
-              <input type="text" class="form-control" placeholder="password" id="password" name="password">
-            </div>
-          </div>    
-
-          <br>
-          <div class="form-control">
-          <button type="submit">Register</button>
-          </div>
-        </form>
-      </div>
-    </div>
   </div>
+</div>
 
-  
-    
-</body>
-</html>
