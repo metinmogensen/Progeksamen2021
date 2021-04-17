@@ -44,12 +44,12 @@ async function post(context, req){
         let payload = req.body;
         await db.incert(payload);
         context.res = {
-            body: {status:"Det virker " + payload + " er sendt"}
+            body: {status:"succes"}
         }
-    }catch(error){
+    } catch(error){
         context.res = {
             status: 400,
-            body:`No user ${error.message}`
+            body: error.message
         }
 
     }
