@@ -4,21 +4,24 @@ const config = require('./config.json')
 var connection = new Connection(config)
 
 function startDB(){
-    return 0 
+    return new Promise((resolve,reject) => {
+    connection.on('connect', function(err){
+        if (err){
+            console.log(err);
+            reject(err);
+        } else {
+            console.log("connected");
+            resolve();
+        }
+    })
+    connection.connect();
+})
 }
-module.exports.startDB  = startDB;
 
-connection.on('connect', function(err){
-    if (err){
-        console.log(err);
-    } else {
-        console.log("connected");
-        // const response = executeSQL();
-        // console.log(response)
-    }
-});
-connection.connect()
-module.exports.Sqlconnection  = connection;
+module.exports.startDB  = startDB;
+module.exports.sqlConnection  = connection;
+
+
 
 
 function insert(payload){
@@ -27,25 +30,25 @@ function insert(payload){
 module.exports.insert  = insert;
 
 function select(firstName){
-    return firstName
+    return new Promise((resolve,reject) => {
+        const sql = "SELECT * FROM [dbo].[user] where firstName = @firstName"
+        const request = new request(sql,(err,rowcount) =>{
+            if (err){
+                reject(err)
+                console.log(err)
+            } else if( rowcount == 0){
+                reject({messsage:"user does not exit"})
+            }
+        });
+        request.addParameter('name',TYPES.VarChar,name)
+    
+        request.on('row',(colums) => {
+            resolve(colums)
+        });
+        connection.execSql(request);
+    
+        return firstName
+    })
+  
 }
 module.exports.select  = select;
-
-
-// function executeSQL(){
-//     request = new Request("SELECT * FROM production.brands", function(err){
-//     if (err){
-//         console.log(err)}})
-
-//     connection.execSql(request)
-//     var counter = 1
-//     response = {}
-//     request.on('row', function(columns){
-//         response[counter] = {}
-//         columns.forEach(function(column){
-//             response[counter][column.metadata.colName] = column.value
-//         });
-//         counter += 1
-//     });
-//     return response
-// };
