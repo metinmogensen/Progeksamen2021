@@ -1,4 +1,4 @@
-const db = require("Progeksamen2021/db_connect.js");
+const db = require("../../Shared/db_connect");
 
 module.exports = async function (context, req) {
     context.log('JavaScript HTTP trigger function processed a request.');
