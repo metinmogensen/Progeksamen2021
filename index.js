@@ -23,7 +23,7 @@ app.use(cors())
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/register', (req, res) => {  
-  res.json(req.body);
+  res.response("hello this is register");
 });
 
 

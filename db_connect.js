@@ -1,8 +1,12 @@
-var Connection = require('tedious').Connection;
-var Request = require('tedious').Request
-
+const { Connection, Request, TYPES } = require('tedious');
 const config = require('./config.json')
+
 var connection = new Connection(config)
+
+function startDB(){
+    return 0 
+}
+module.exports.startDB  = startDB;
 
 connection.on('connect', function(err){
     if (err){
@@ -13,8 +17,19 @@ connection.on('connect', function(err){
         // console.log(response)
     }
 });
-
 connection.connect()
+module.exports.Sqlconnection  = connection;
+
+
+function insert(payload){
+    return payload
+}
+module.exports.insert  = insert;
+
+function select(firstName){
+    return firstName
+}
+module.exports.select  = select;
 
 
 // function executeSQL(){
