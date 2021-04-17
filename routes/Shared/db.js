@@ -25,10 +25,37 @@ module.exports.sqlConnection  = connection;
 
 
 
-function insert(payload){
-    return payload
+function incert(payload){
+    return new Promise((resolve, reject) => {
+        const sql = `INSERT INTO [user] (firstName, lastName, gender, email, password, age, hotel, perferredGender) VALUES(@firstName, @lastName, @gender, @email, @password, @age, @hotel, @perferredGender)`
+        const request = new Request(sql,(err) => {
+            if(err){
+                reject(err)
+                console.log(err)
+            }
+
+        });
+
+        request.addParameter('firstName',TYPES.VarChar,payload.firstName)
+        request.addParameter('lastName',TYPES.VarChar,payload.lastName)
+        request.addParameter('gender',TYPES.VarChar,payload.gender)
+        request.addParameter('email',TYPES.VarChar,payload.email)
+        request.addParameter('password',TYPES.VarChar,payload.password)
+        request.addParameter('age',TYPES.Numeric,payload.age)
+        request.addParameter('hotel',TYPES.VarChar,payload.hotel)
+        request.addParameter('perferredGender',TYPES.VarChar,payload.perferredGender)
+
+        request.on("requestCompleted",(row) => {
+            console.log("User inserted", row);
+            resolve("user Inserted", row)
+            connection.execSql(request);
+        })
+
+
+    });
 }
-module.exports.insert  = insert;
+
+module.exports.incert  = incert;
 
 function select(firstName){
     return new Promise((resolve,reject) => {

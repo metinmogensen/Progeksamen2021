@@ -49,7 +49,7 @@ async function post(context, req){
     }catch(error){
         context.res = {
             status: 400,
-            body: error.message
+            body:`No user ${error.message}`
         }
 
     }
