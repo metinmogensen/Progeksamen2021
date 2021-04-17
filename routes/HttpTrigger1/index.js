@@ -42,7 +42,7 @@ async function post(context, req){
         let payload = req.body;
         await db.incert(payload);
         context.res = {
-            body: {status:"Det virker"}
+            body: {status:"Det virker " + payload + " er sendt"}
         }
     }catch(error){
         context.res = {
@@ -52,3 +52,4 @@ async function post(context, req){
 
     }
 }
+jklj
