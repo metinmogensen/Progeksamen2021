@@ -1,5 +1,8 @@
 var form = document.getElementById("form")
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 form.addEventListener('submit', function(e) {
     e.preventDefault()
 
@@ -55,29 +58,30 @@ function onSubmit(){
     })
     .then((data) => {
         console.log(data)
-    }).catch((err) =>{
+    }).catch((err) =>{ // catcher fejl, hvis noget går galt
         console.log(err)
     })
 })
 
-var getButton = document.getElementById("getUsers")
 
-getButton.addEventListener("click", function(){
-    var name1 = document.getElementById("name").value
-    fetch(`http://localhost:7071/api/user?name=${name1}`)
-        .then(
-            function(response){
-                if (response.status !== 200){
-                    console.log("Noget gik galt" + response.status);
-                    return;
-                }
+// var getButton = document.getElementById("getUsers")
 
-                response.json().then(function (data) {
-                    console.log(data);
-                });
-            }
-        )
-        .catch(function (err){
-            console.log(err);
-        });
-})
+// getButton.addEventListener("click", function(){
+//     var name1 = document.getElementById("name").value
+//     fetch(`http://localhost:7071/api/user?name=${name1}`)
+//         .then(
+//             function(response){
+//                 if (response.status !== 200){
+//                     console.log("Noget gik galt" + response.status);
+//                     return;
+//                 }
+
+//                 response.json().then(function (data) {
+//                     console.log(data);
+//                 });
+//             }
+//         )
+//         .catch(function (err){
+//             console.log(err);
+//         });
+// })
