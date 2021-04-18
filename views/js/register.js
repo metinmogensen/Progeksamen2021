@@ -9,7 +9,6 @@ Window.onload = form.addEventListener('submit', function(e) {
     var gender = document.getElementById("gender").value
     var email = document.getElementById("email").value
     var password = document.getElementById("password").value
-    var email = document.getElementById("email").value
     var age = document.getElementById("age").value
     var hotel = document.getElementById("hotel").value
     var preferredGender = document.getElementById("preferredGender").value
