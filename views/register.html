@@ -3,17 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Super sej hjemmeside</title>
-    <script text="javascriptn
-    " src="js/register.js"></script>
 </head>
 <body>
     <div>
         <h1>Post User to API</h1>
-<<<<<<< HEAD
         <form id="form" method="post" action=http://localhost:7071/api/register2>
-=======
-        <form id="form" method="post">
->>>>>>> 420cf6619eae17ceb92839ba5b3dbf0620008f55
             <input type="text" id="firstName" placeholder="First name"/>
             <input type="text" id="lastName" placeholder="Last name"/>
             <input type="text" id="gender" placeholder="Gender"/>
@@ -30,5 +24,51 @@
         <button type="button" id="getUsers">Get User</button>
     </div>
     
+    
 </body>
+<script type="text/javascript" >
+var form = document.getElementById("form")
+
+
+form.addEventListener('submit', function(e) {
+    e.preventDefault()
+
+    var firstName = document.getElementById("firstName").value
+    var lastName = document.getElementById("lastName").value
+    var gender = document.getElementById("gender").value
+    var email = document.getElementById("email").value
+    var password = document.getElementById("password").value
+    var email = document.getElementById("email").value
+    var age = document.getElementById("age").value
+    var hotel = document.getElementById("hotel").value
+    var preferredGender = document.getElementById("preferredGender").value
+    
+
+    fetch("http://localhost:7071/api/register2", {
+        method: 'POST',
+        body: JSON.stringify({
+            firstName: firstName,
+            lastName: lastName,
+            gender: gender, 
+            email: email,
+            password: password,
+            age: age,
+            hotel: hotel,
+            preferredGender: preferredGender
+        }), 
+        headers: {
+            "Content-Type": "application/json; charset-UTF-8"
+        }
+    })
+    .then((response) => {
+        return response.text()
+    })
+    .then((data) => {
+        console.log(data)
+    }).catch((err) =>{ // catcher fejl, hvis noget går galt
+        console.log(err)
+    })
+})
+</script>
+
 </html>
