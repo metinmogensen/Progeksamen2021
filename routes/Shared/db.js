@@ -27,7 +27,7 @@ module.exports.sqlConnection  = connection;
 
 function insert(payload){
     return new Promise((resolve, reject) => {
-        const sql = `INSERT INTO [user] (firstName, lastName, gender, email, password, age, hotel, perferredGender) VALUES(@firstName, @lastName, @gender, @email, @password, @age, @hotel, @perferredGender)`
+        const sql = `INSERT INTO [user] (firstName, lastName, gender, email, password, age, hotel, preferredGender) VALUES(@firstName, @lastName, @gender, @email, @password, @age, @hotel, @preferredGender)`
         const request = new Request(sql,(err) => {
             if(err){
                 reject(err)
@@ -44,7 +44,7 @@ function insert(payload){
         request.addParameter('password',TYPES.VarChar,payload.password)
         request.addParameter('age',TYPES.Numeric,payload.age)
         request.addParameter('hotel',TYPES.VarChar,payload.hotel)
-        request.addParameter('perferredGender',TYPES.VarChar,payload.perferredGender)
+        request.addParameter('preferredGender',TYPES.VarChar,payload.preferredGender)
 
         request.on("requestCompleted",(row) => {
             console.log("User inserted", row);

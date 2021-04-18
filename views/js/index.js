@@ -3,20 +3,46 @@ var form = document.getElementById("form")
 form.addEventListener('submit', function(e) {
     e.preventDefault()
 
-    var name = document.getElementById("name").value
-    var email = document.getElementById("email").value
+    var firstName = document.getElementById("firstName").value
+    var lastName = document.getElementById("lastName").value
     var gender = document.getElementById("gender").value
-    var country = document.getElementById("country").value
-    var birthdate = document.getElementById("birthdate").value
+    var email = document.getElementById("email").value
+    var password = document.getElementById("password").value
+    var age = document.getElementById("age").value
+    var hotel = document.getElementById("hotel").value
+    var preferredGender = document.getElementById("preferredGender").value
 
-    fetch("http://localhost:7071/api/user", {
+    /*
+    function onSubmit(){
+        axios.post('localhost:5501/users', {​​​​​​​​
+            fName: fName,
+            lName: lName,
+            age: age,
+            gender: gender,
+            mail: mail,
+            password: pWord,
+    
+          }​​​​​​​​)
+          .then(function (response) {​​​​​​​​
+            console.log(response);
+          }​​​​​​​​)
+          .catch(function (error) {​​​​​​​​
+            console.log(error);
+          }​​​​​​​​);
+    }
+    */
+
+    fetch("http://localhost:7071/api/register2", {
         method: 'POST',
         body: JSON.stringify({
-            name: name,
-            email: email,
+            firstName: firstName,
+            lastName: lastName,
             gender: gender, 
-            country: country,
-            birthdate: birthdate
+            email: email,
+            password: password,
+            age: age,
+            hotel: hotel,
+            preferredGender
         }), 
         headers: {
             "Content-Type": "application/json; charset-UTF-8"
