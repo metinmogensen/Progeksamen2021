@@ -2,28 +2,9 @@
   "name": "progeksamen2021",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js",
-    "start-server": "node index.js",
-    "stop": "node index.stop.js"
+    "start": "func start",
+    "test": "echo \"No tests yet...\""
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/metinmogensen/Progeksamen2021.git"
-  },
-  "author": "Metin",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/metinmogensen/Progeksamen2021/issues"
-  },
-  "homepage": "https://github.com/metinmogensen/Progeksamen2021#readme",
-  "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^4.17.1",
-    "nodemon": "^2.0.7",
-    "tedious": "^11.0.7",
-    "vue": "^2.6.12"
-  }
+  "devDependencies": {}
 }

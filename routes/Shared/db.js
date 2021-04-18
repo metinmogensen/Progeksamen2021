@@ -25,7 +25,7 @@ module.exports.sqlConnection  = connection;
 
 
 
-function incert(payload){
+function insert(payload){
     return new Promise((resolve, reject) => {
         const sql = `INSERT INTO [user] (firstName, lastName, gender, email, password, age, hotel, perferredGender) VALUES(@firstName, @lastName, @gender, @email, @password, @age, @hotel, @perferredGender)`
         const request = new Request(sql,(err) => {
@@ -36,6 +36,7 @@ function incert(payload){
 
         });
 
+        //request.addParameter('userId',TYPES.VarChar,payload.userId)
         request.addParameter('firstName',TYPES.VarChar,payload.firstName)
         request.addParameter('lastName',TYPES.VarChar,payload.lastName)
         request.addParameter('gender',TYPES.VarChar,payload.gender)
@@ -48,14 +49,13 @@ function incert(payload){
         request.on("requestCompleted",(row) => {
             console.log("User inserted", row);
             resolve("user Inserted", row)
-            connection.execSql(request);
         })
-
+        connection.execSql(request);
 
     });
 }
 
-module.exports.incert  = incert;
+module.exports.insert  = insert;
 
 function select(firstName){
     return new Promise((resolve,reject) => {
