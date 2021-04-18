@@ -8,29 +8,31 @@ form.addEventListener('submit', function(e) {
     var gender = document.getElementById("gender").value
     var email = document.getElementById("email").value
     var password = document.getElementById("password").value
+    var email = document.getElementById("email").value
     var age = document.getElementById("age").value
     var hotel = document.getElementById("hotel").value
     var preferredGender = document.getElementById("preferredGender").value
-
-    /*
-    function onSubmit(){
-        axios.post('localhost:5501/users', {​​​​​​​​
-            fName: fName,
-            lName: lName,
-            age: age,
-            gender: gender,
-            mail: mail,
-            password: pWord,
     
-          }​​​​​​​​)
-          .then(function (response) {​​​​​​​​
-            console.log(response);
-          }​​​​​​​​)
-          .catch(function (error) {​​​​​​​​
-            console.log(error);
-          }​​​​​​​​);
-    }
-    */
+/*
+function onSubmit(){
+    axios.post('localhost:3000/user' {​​​​​​​​
+        firstName: firstName,
+        lastName: lastName,
+        gender: gender,
+        email: email,
+        password: password,
+        age: age,
+        hotel: hotel,
+        preferredGender: preferredGender
+      }​​​​​​​​)
+      .then(function (response) {​​​​​​​​
+        console.log(response);
+      }​​​​​​​​)
+      .catch(function (error) {​​​​​​​​
+        console.log(error);
+      }​​​​​​​​);
+}
+*/
 
     fetch("http://localhost:7071/api/register2", {
         method: 'POST',
@@ -42,7 +44,7 @@ form.addEventListener('submit', function(e) {
             password: password,
             age: age,
             hotel: hotel,
-            preferredGender
+            preferredGender: preferredGender
         }), 
         headers: {
             "Content-Type": "application/json; charset-UTF-8"
