@@ -1,10 +1,4 @@
-window.getRunningScript = () => {
-    return () => {      
-        return new Error().stack.match(/([^ \n])*([a-z]*:\/\/\/?)*?[a-z0-9\/\\]*\.js/ig)[0]
-    }
-}
 
-console.log('%c Currently running script:', 'color: blue', getRunningScript()())
 
 var form = document.getElementById("form")
 
@@ -22,8 +16,8 @@ form.addEventListener('submit', function(e) {
     var preferredGender = document.getElementById("preferredGender").value
 
 
-
-    axios.post('localhost:7071/api/register2', {​​​​​​​​
+/*
+    axios.post("localhost:7071/api/register2", {​​​​​​​​
         firstName: firstName,
         lastName: lastName,
         gender: gender,
@@ -39,6 +33,7 @@ form.addEventListener('submit', function(e) {
       .catch(function (error) {​​​​​​​​
         console.log(error);
       }​​​​​​​​);
+*/
 
     fetch("http://localhost:7071/api/register2", {
         method: 'POST',
@@ -113,4 +108,4 @@ form.addEventListener('submit', function(e) {
 //             console.log(err);
 //         });
 // })
-document.location.port;
+})
