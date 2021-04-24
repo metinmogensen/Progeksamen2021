@@ -1,7 +1,15 @@
+window.getRunningScript = () => {
+    return () => {      
+        return new Error().stack.match(/([^ \n])*([a-z]*:\/\/\/?)*?[a-z0-9\/\\]*\.js/ig)[0]
+    }
+}
+
+console.log('%c Currently running script:', 'color: blue', getRunningScript()())
+
 var form = document.getElementById("form")
 
 
-Window.onload = form.addEventListener('submit', function(e) {
+form.addEventListener('submit', function(e) {
     e.preventDefault()
 
     var firstName = document.getElementById("firstName").value
@@ -51,7 +59,7 @@ function onSubmit(){
         }
     })
     .then((response) => {
-        return response.json()
+        return response.json()//vores server bruger tekst -> så det burde være res.tekst
     })
     .then((data) => {
         console.log(data)
@@ -82,3 +90,4 @@ function onSubmit(){
 //             console.log(err);
 //         });
 // })
+document.location.port;
