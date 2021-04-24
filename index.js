@@ -1,19 +1,20 @@
 const express = require('express')
 const path = require('path')
 const bodyParser = require('body-parser');
-const cors = require('cors')
 PORT = 3000;
 
 const app = express() 
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
 
 // parse application/json
-app.use(bodyParser.json())
 
-app.get("/register", (req,res) => {
-  res.sendFile(path.join(__dirname+ "/views/register.html")) 
+app.use(bodyParser.json({ extended: false }));
+
+app.use("/register", (req,res, next) => {
+  res.sendFile(__dirname+ "/views/register.html")
+  next 
 });
+
 
 
 // // Register

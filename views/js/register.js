@@ -1,9 +1,7 @@
 var form = document.getElementById("form")
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
-form.addEventListener('submit', function(e) {
+Window.onload = form.addEventListener('submit', function(e) {
     e.preventDefault()
 
     var firstName = document.getElementById("firstName").value
