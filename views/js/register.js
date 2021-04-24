@@ -14,10 +14,10 @@ form.addEventListener('submit', function(e) {
     var age = document.getElementById("age").value
     var hotel = document.getElementById("hotel").value
     var preferredGender = document.getElementById("preferredGender").value
-    
-/*
-function onSubmit(){
-    axios.post('localhost:3000/user' {​​​​​​​​
+
+
+
+    axios.post('localhost:7071/api/register2', {​​​​​​​​
         firstName: firstName,
         lastName: lastName,
         gender: gender,
@@ -33,34 +33,35 @@ function onSubmit(){
       .catch(function (error) {​​​​​​​​
         console.log(error);
       }​​​​​​​​);
-}
-*/
-
-    fetch("http://localhost:7071/api/register2", {
-        method: 'POST',
-        body: JSON.stringify({
-            firstName: firstName,
-            lastName: lastName,
-            gender: gender, 
-            email: email,
-            password: password,
-            age: age,
-            hotel: hotel,
-            preferredGender: preferredGender
-        }), 
-        headers: {
-            "Content-Type": "application/json; charset-UTF-8"
-        }
-    })
-    .then((response) => {
-        return response.json()
-    })
-    .then((data) => {
-        console.log(data)
-    }).catch((err) =>{ // catcher fejl, hvis noget går galt
-        console.log(err)
-    })
 })
+
+
+
+//     fetch("http://localhost:7071/api/register2", {
+//         method: 'POST',
+//         body: JSON.stringify({
+//             firstName: firstName,
+//             lastName: lastName,
+//             gender: gender, 
+//             email: email,
+//             password: password,
+//             age: age,
+//             hotel: hotel,
+//             preferredGender: preferredGender
+//         }), 
+//         headers: {
+//             "Content-Type": "application/json; charset-UTF-8"
+//         }
+//     })
+//     .then((response) => {
+//         return response.json()
+//     })
+//     .then((data) => {
+//         console.log(data)
+//     }).catch((err) =>{ // catcher fejl, hvis noget går galt
+//         console.log(err)
+//     })
+// })
 
 
 // var getButton = document.getElementById("getUsers")
