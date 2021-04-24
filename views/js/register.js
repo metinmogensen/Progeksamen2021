@@ -1,9 +1,7 @@
 var form = document.getElementById("form")
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
-form.addEventListener('submit', function(e) {
+Window.onload = form.addEventListener('submit', function(e) {
     e.preventDefault()
 
     var firstName = document.getElementById("firstName").value
@@ -11,7 +9,6 @@ form.addEventListener('submit', function(e) {
     var gender = document.getElementById("gender").value
     var email = document.getElementById("email").value
     var password = document.getElementById("password").value
-    var email = document.getElementById("email").value
     var age = document.getElementById("age").value
     var hotel = document.getElementById("hotel").value
     var preferredGender = document.getElementById("preferredGender").value
@@ -59,7 +56,7 @@ function onSubmit(){
     .then((data) => {
         console.log(data)
     }).catch((err) =>{ // catcher fejl, hvis noget går galt
-        console.log(err)
+        console.log("wuups: " + err)
     })
 })
 
