@@ -22,9 +22,6 @@ function startDb() {
 module.exports.startDb  = startDb;
 module.exports.sqlConnection  = connection;
 
-
-
-
 function insert(payload){
     return new Promise((resolve, reject) => {
         const sql = `INSERT INTO [user] (firstName, lastName, gender, email, password, age, hotel, preferredGender) VALUES(@firstName, @lastName, @gender, @email, @password, @age, @hotel, @preferredGender)`
@@ -80,3 +77,28 @@ function select(firstName){
   
 }
 module.exports.select = select;
+
+function login (email, password) {
+    return new Promise((resolve, reject) => {
+    const sql = 'SELECT * FROM [user] where email=@email AND password=@password'
+    const request = new Request(sql,(err,rowcount) =>{
+        if (err){
+            reject(err)
+            console.log(err)
+        } else if( rowcount == 0){
+            reject({messsage:"user does not exit"})
+        }
+    });
+  
+      request.addParameter('email', TYPES.VarChar, email);
+      request.addParameter('password', TYPES.VarChar, password);
+
+      request.on('row',(colums) => {
+        resolve(colums)
+    })
+      connection.execSql(request)
+      return "you are now logged in"
+    });
+  } 
+
+module.exports.login = login;

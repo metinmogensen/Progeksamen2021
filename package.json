@@ -6,9 +6,5 @@
     "start": "func start",
     "test": "echo \"No tests yet...\""
   },
-  "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^4.17.1",
-    "tedious": "^11.0.7"
-  }
+  "devDependencies": {}
 }
