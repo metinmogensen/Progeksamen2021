@@ -19,7 +19,7 @@ form.addEventListener('submit', function(e) {
         }
     })
     .then((response) => {
-        return response.json()//vores server bruger tekst -> så det burde være res.tekst
+        return response.text()
     })
     .then((data) => {
         console.log(data)

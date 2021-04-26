@@ -34,4 +34,5 @@ async function post(context, req){
             body:`No user ${error.message}`
         }
     }
+    return "you are now logged in"
 }

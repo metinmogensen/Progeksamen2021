@@ -78,9 +78,9 @@ function select(firstName){
 }
 module.exports.select = select;
 
-function login (email, password) {
+function login (payload) {
     return new Promise((resolve, reject) => {
-    const sql = 'SELECT * FROM [user] where email=@email AND password=@password'
+    const sql = 'SELECT * FROM [user] where email = @email AND password = @password'
     const request = new Request(sql,(err,rowcount) =>{
         if (err){
             reject(err)
@@ -90,8 +90,8 @@ function login (email, password) {
         }
     });
   
-      request.addParameter('email', TYPES.VarChar, email);
-      request.addParameter('password', TYPES.VarChar, password);
+      request.addParameter('email', TYPES.VarChar, payload.email)
+      request.addParameter('password', TYPES.VarChar, payload.password)
 
       request.on('row',(colums) => {
         resolve(colums)
