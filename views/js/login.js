@@ -1,19 +1,17 @@
-
-
 var form = document.getElementById("form")
 
 
 form.addEventListener('submit', function(e) {
     e.preventDefault()
 
-    var firstName = document.getElementById("firstName").value
+    var email = document.getElementById("email").value
     var password = document.getElementById("password").value
 
 
     fetch("http://localhost:7071/api/login", {
         method: 'POST',
         body: JSON.stringify({
-            firstName: firstName,
+            email: email,
             password: password,
         }), 
         headers: {
