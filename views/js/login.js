@@ -10,17 +10,11 @@ form.addEventListener('submit', function(e) {
     var password = document.getElementById("password").value
 
 
-    fetch("http://localhost:7071/api/register2", {
+    fetch("http://localhost:7071/api/login", {
         method: 'POST',
         body: JSON.stringify({
             firstName: firstName,
-            lastName: lastName,
-            gender: gender, 
-            email: email,
             password: password,
-            age: age,
-            hotel: hotel,
-            preferredGender: preferredGender
         }), 
         headers: {
             "Content-Type": "application/json; charset-UTF-8"
@@ -34,3 +28,4 @@ form.addEventListener('submit', function(e) {
     }).catch((err) =>{ // catcher fejl, hvis noget går galt
         console.log("wuups: " + err)
     })
+})
