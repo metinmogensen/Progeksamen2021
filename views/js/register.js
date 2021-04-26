@@ -16,25 +16,6 @@ form.addEventListener('submit', function(e) {
     var preferredGender = document.getElementById("preferredGender").value
 
 
-/*
-    axios.post("localhost:7071/api/register2", {​​​​​​​​
-        firstName: firstName,
-        lastName: lastName,
-        gender: gender,
-        email: email,
-        password: password,
-        age: age,
-        hotel: hotel,
-        preferredGender: preferredGender
-      }​​​​​​​​)
-      .then(function (response) {​​​​​​​​
-        console.log(response);
-      }​​​​​​​​)
-      .catch(function (error) {​​​​​​​​
-        console.log(error);
-      }​​​​​​​​);
-*/
-
     fetch("http://localhost:7071/api/register2", {
         method: 'POST',
         body: JSON.stringify({
@@ -52,60 +33,11 @@ form.addEventListener('submit', function(e) {
         }
     })
     .then((response) => {
-        return response.json()//vores server bruger tekst -> så det burde være res.tekst
+        return response.json()
     })
     .then((data) => {
         console.log(data)
     }).catch((err) =>{ // catcher fejl, hvis noget går galt
         console.log("wuups: " + err)
     })
-
-//     fetch("http://localhost:7071/api/register2", {
-//         method: 'POST',
-//         body: JSON.stringify({
-//             firstName: firstName,
-//             lastName: lastName,
-//             gender: gender, 
-//             email: email,
-//             password: password,
-//             age: age,
-//             hotel: hotel,
-//             preferredGender: preferredGender
-//         }), 
-//         headers: {
-//             "Content-Type": "application/json; charset-UTF-8"
-//         }
-//     })
-//     .then((response) => {
-//         return response.json()
-//     })
-//     .then((data) => {
-//         console.log(data)
-//     }).catch((err) =>{ // catcher fejl, hvis noget går galt
-//         console.log(err)
-//     })
-// })
-
-
-// var getButton = document.getElementById("getUsers")
-
-// getButton.addEventListener("click", function(){
-//     var name1 = document.getElementById("name").value
-//     fetch(`http://localhost:7071/api/user?name=${name1}`)
-//         .then(
-//             function(response){
-//                 if (response.status !== 200){
-//                     console.log("Noget gik galt" + response.status);
-//                     return;
-//                 }
-
-//                 response.json().then(function (data) {
-//                     console.log(data);
-//                 });
-//             }
-//         )
-//         .catch(function (err){
-//             console.log(err);
-//         });
-// })
 })
