@@ -81,6 +81,11 @@ module.exports.select = select;
 function login (payload) {
     return new Promise((resolve, reject) => {
     const sql = 'SELECT * FROM [user] where email = @email AND password = @password'
+    var users = function(data){
+        this.email = data["email"].value;
+        this.password = data["password"].value;
+    }
+    users = [];
     const request = new Request(sql,(err,rowcount) =>{
         if (err){
             reject(err)
@@ -94,8 +99,8 @@ function login (payload) {
       request.addParameter('password', TYPES.VarChar, payload.password)
 
       request.on('row',(colums) => {
-        resolve(colums)
-    })
+        resolve(users.push(new users(colums)));
+      })
       connection.execSql(request)
       return "you are now logged in"
     });

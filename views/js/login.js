@@ -19,7 +19,7 @@ form.addEventListener('submit', function(e) {
         }
     })
     .then((response) => {
-        return response.text()
+        return response.json()
     })
     .then((data) => {
         console.log(data)
