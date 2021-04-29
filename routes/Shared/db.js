@@ -1,6 +1,6 @@
 const { Connection, Request, TYPES } = require('tedious');
 const config = require('../../config.json');
-const { express } = require('express');
+
 
 
 var connection = new Connection(config)
@@ -23,6 +23,7 @@ function startDb() {
 module.exports.startDb  = startDb;
 module.exports.sqlConnection  = connection;
 
+//CREATE USER
 function insert(payload){
     return new Promise((resolve, reject) => {
         const sql = `INSERT INTO [user] (firstName, lastName, gender, email, password, age, hotel, preferredGender) VALUES(@firstName, @lastName, @gender, @email, @password, @age, @hotel, @preferredGender)`
