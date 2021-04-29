@@ -2,6 +2,7 @@ const { Connection, Request, TYPES } = require('tedious');
 const config = require('../../config.json');
 const { express } = require('express');
 
+
 var connection = new Connection(config)
 
 function startDb() {

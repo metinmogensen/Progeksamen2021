@@ -1,4 +1,7 @@
 const db = require("../routes/Shared/db");
+const {jwt} = require('jsonwebtoken')
+const accessTokenSecret = 'youraccesstokensecret';
+
 
 module.exports = async function (context, req) {
     context.log('JavaScript Login HTTP trigger function processed a request.');
@@ -25,9 +28,12 @@ async function post(context, req){
     try{
         let payload = req.body;
         await db.login(payload);
+        const accessToken = jwt.sign({ email: payload.email,  pass: payload.password }, accessTokenSecret);
+        
+            res.json({
+                accessToken});
         context.res = {
-            status: 200,
-            
+            status: 200,          
         }
     } catch(error){
         context.res = {
