@@ -87,7 +87,7 @@ function login (payload) {
             reject(err)
             console.log(err)
         } else if( rowcount == 0){
-            reject({messsage:"user does not exit"})
+            reject({message: "no user found"});
         }
     });
   
@@ -95,8 +95,8 @@ function login (payload) {
       request.addParameter('password', TYPES.VarChar, payload.password)
 
       request.on('row',(colums) => {
-        resolve(colums)
-    })
+        resolve(colums);
+      })
       connection.execSql(request)
       return "you are now logged in"
     });

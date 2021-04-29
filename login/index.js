@@ -23,16 +23,16 @@ module.exports = async function (context, req) {
 
 async function post(context, req){
     try{
-    let payload = req.body
-        let user = await db.login(payload)
+        let payload = req.body;
+        await db.login(payload);
         context.res = {
-            body: user
-        };
+            status: 200,
+        }
     } catch(error){
         context.res = {
             status: 400,
-            body:`No user ${error.message}`
+            body: error.message
         }
+
     }
-    return "you are now logged in"
 }

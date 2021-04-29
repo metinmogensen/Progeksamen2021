@@ -2,6 +2,7 @@
     "version": "0.2.0",
     "configurations": [
 
+<<<<<<< HEAD
         {
             "name": "Launch Chrome",
             "request": "launch",
@@ -22,6 +23,8 @@
             "request": "launch",
             "type": "node-terminal"
         },
+=======
+>>>>>>> f0ca5268c5a57d4903f318dd588bcc17ae3388e9
         {
             "name": "Attach to Node Functions",
             "type": "node",
@@ -31,3 +34,4 @@
         }
     ]
 }
+
