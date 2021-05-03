@@ -9,8 +9,13 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
+<<<<<<< HEAD
     "tedious": "^11.0.7",
     "vee-validate": "^4.3.5",
     "vue": "^3.0.11"
+=======
+    "jsonwebtoken": "^8.5.1",
+    "tedious": "^11.0.7"
+>>>>>>> 4ce912126fc0e9e81c47914a208eaaed50b430e7
   }
 }
