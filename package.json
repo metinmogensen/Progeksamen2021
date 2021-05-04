@@ -3,18 +3,37 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "func start",
-    "test": "echo \"No tests yet...\""
+    "start": "webpack serve --open",
+    "build": "webpack --mode production"
   },
   "dependencies": {
+    "core-js": "^3.11.1",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "parse": "^3.2.0",
     "tedious": "^11.0.7",
     "vee-validate": "^4.3.5",
-    "vue": "^3.0.11"
-=======
-    "jsonwebtoken": "^8.5.1",
-    "tedious": "^11.0.7"
->>>>>>> 4ce912126fc0e9e81c47914a208eaaed50b430e7
+    "vue": "^3.0.11",
+    "vue-router": "^3.5.1",
+    "vuex": "^3.6.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.13.16",
+    "@babel/core": "^7.14.0",
+    "@babel/preset-env": "^7.14.0",
+    "@vue/cli-plugin-router": "^4.5.12",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-preset-vue": "^2.0.2",
+    "css-loader": "^5.2.4",
+    "html-webpack-plugin": "^5.3.1",
+    "path": "^0.12.7",
+    "vue-loader": "^15.9.6",
+    "vue-template-compiler": "^2.6.12",
+    "webpack": "^5.36.2",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2"
   }
 }

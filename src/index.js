@@ -3,7 +3,7 @@ import VeeValidate from 'vee-validate';
 
 import { store } from './_store';
 import { router } from './_helpers';
-import App from './app/App';
+import App from '/Users/carolinelangholz/Documents/ha_it/Prog/progeksamen2021/Progeksamen2021/src/app';
 
 Vue.use(VeeValidate);
 
