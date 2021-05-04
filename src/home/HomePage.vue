@@ -1,8 +1,8 @@
 <template>
     <div>
-        <h1>Heyyy {{account.user.firstName}}!</h1>
-        <p>Velkommen til Hoetell 2021. </p>
-        <h3>Users from secure api end point:</h3>
+        <h1>Tillykke {{account.user.firstName}}!</h1>
+        <p>Du er ankommet til Hoetell 2021. </p>
+        <h3>Her kan du se users fra samme api :')</h3>
         <em v-if="users.loading">Loading users...</em>
         <span v-if="users.error" class="text-danger">ERROR: {{users.error}}</span>
         <ul v-if="users.items">
@@ -10,7 +10,7 @@
                 {{user.firstName + ' ' + user.lastName}}
                 <span v-if="user.deleting"><em> - Deleting...</em></span>
                 <span v-else-if="user.deleteError" class="text-danger"> - ERROR: {{user.deleteError}}</span>
-                <span v-else> - <a @click="deleteUser(user.id)" class="text-danger">Delete</a></span>
+                <span v-else> - <a @click="deleteUser(user.id)" class="text-danger">Delete</a><br><a @click="deleteUser(user.id)" class="text-danger">Like:))</a></span>
             </li>
         </ul>
         <p>
