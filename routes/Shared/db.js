@@ -104,3 +104,29 @@ function login (payload) {
   } 
 
 module.exports.login = login;
+
+
+
+function adminLogin (payload) {
+    return new Promise((resolve, reject) => {
+    const sql = 'SELECT * FROM [user] where isAdmin = @isAdmin'
+    const request = new Request(sql,(err,rowcount) =>{
+        if (err){
+            reject(err)
+            console.log(err)
+        } else if( rowcount == 0){
+            reject({message: "you are not admin!"});
+        }
+    });
+  
+      request.addParameter('isAdmin', TYPES.VarChar, payload.isAdmin)
+
+      request.on('row',(colums) => {
+        resolve(colums);
+      })
+      connection.execSql(request)
+      return "you are now logged in as Admin"
+    });
+  } 
+
+module.exports.adminLogin = adminLogin;
