@@ -46,7 +46,7 @@ async function post(context, req){
 //     try{
 //         let payload = req.body;
 //         await db.login(payload);
-//         // const accessToken = jwt.sign({ email: payload.email,  pass: payload.password });
+//         // const accessToken = jwt.sign({ email: payload.email,  pass: payload.password,  });
         
 //             res.json({
 //                 accessToken});
