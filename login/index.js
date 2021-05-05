@@ -1,6 +1,6 @@
 const db = require("../routes/Shared/db");
-const {jwt} = require('jsonwebtoken')
-const accessTokenSecret = 'youraccesstokensecret';
+// const {jwt} = require('jsonwebtoken')
+// const accessTokenSecret = 'youraccesstokensecret';
 
 
 module.exports = async function (context, req) {
@@ -24,16 +24,14 @@ module.exports = async function (context, req) {
     }
 }
 
+
 async function post(context, req){
     try{
         let payload = req.body;
         await db.login(payload);
-        const accessToken = jwt.sign({ email: payload.email,  pass: payload.password }, accessTokenSecret);
-        
-            res.json({
-                accessToken});
+
         context.res = {
-            status: 200,          
+            status: 200,
         }
     } catch(error){
         context.res = {
@@ -43,3 +41,23 @@ async function post(context, req){
 
     }
 }
+
+// async function post(context, req){
+//     try{
+//         let payload = req.body;
+//         await db.login(payload);
+//         // const accessToken = jwt.sign({ email: payload.email,  pass: payload.password });
+        
+//             res.json({
+//                 accessToken});
+//         context.res = {
+//             status: 200,          
+//         }
+//     } catch(error){
+//         context.res = {
+//             status: 400,
+//             body: error.message
+//         }
+
+//     }
+// }
