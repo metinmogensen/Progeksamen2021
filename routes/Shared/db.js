@@ -80,6 +80,7 @@ function select(firstName){
 }
 module.exports.select = select;
 
+// LOGIN 
 function login (payload) {
     return new Promise((resolve, reject) => {
     const sql = 'SELECT * FROM [user] where email = @email AND password = @password'
@@ -106,27 +107,95 @@ function login (payload) {
 module.exports.login = login;
 
 
+// UpdateUser
 
-function adminLogin (payload) {
-    return new Promise((resolve, reject) => {
-    const sql = 'SELECT * FROM [user] where isAdmin = @isAdmin'
-    const request = new Request(sql,(err,rowcount) =>{
-        if (err){
-            reject(err)
-            console.log(err)
-        } else if( rowcount == 0){
-            reject({message: "you are not admin!"});
-        }
-    });
+// function updateUser(payload){
+//     return new Promise((resolve, reject) => {
+//         const sql = `UPDATE [user] SET (firstName, lastName, gender, email, password, age, hotel, preferredGender) = VALUES(@firstName, @lastName, @gender, @email, @password, @age, @hotel, @preferredGender)`
+//         const request = new Request(sql,(err) => {
+//             if(err){
+//                 reject(err)
+//                 console.log(err)
+//             }
+
+//         });
+
+//         //request.addParameter('userId',TYPES.VarChar,payload.userId)
+//         request.addParameter('firstName',TYPES.VarChar,payload.firstName)
+//         request.addParameter('lastName',TYPES.VarChar,payload.lastName)
+//         request.addParameter('gender',TYPES.VarChar,payload.gender)
+//         request.addParameter('email',TYPES.VarChar,payload.email)
+//         request.addParameter('password',TYPES.VarChar,payload.password)
+//         request.addParameter('age',TYPES.Numeric,payload.age)
+//         request.addParameter('hotel',TYPES.VarChar,payload.hotel)
+//         request.addParameter('preferredGender',TYPES.VarChar,payload.preferredGender)
+
+//         request.on("requestCompleted",(row) => {
+//             console.log("User updated", row);
+//             resolve("user updated", row)
+//         })
+//         connection.execSql(request);
+
+//     });
+// }
+// module.exports.updateUser = updateUser;
+
+
+////////
+
+// function login (payload) {
+//     return new Promise((resolve, reject) => {
+//     const sql = 'SELECT * FROM [user] where email = @email AND password = @password AND isAdmin = @isAdmin'
+//     const request = new Request(sql,(err,rowcount) =>{
+//         if (err){
+//             reject(err)
+//             console.log(err)
+//         } else if( rowcount == 0){
+//             reject({message: "no user found"});
+//         }
+//     });
   
-      request.addParameter('isAdmin', TYPES.VarChar, payload.isAdmin)
+//       request.addParameter('email', TYPES.VarChar, payload.email)
+//       request.addParameter('password', TYPES.VarChar, payload.password)
+//       request.addParameter('isAdmin', TYPES.VarChar, payload.isAdmin)
 
-      request.on('row',(colums) => {
-        resolve(colums);
-      })
-      connection.execSql(request)
-      return "you are now logged in as Admin"
-    });
-  } 
+//       request.on('row',(colums) => {
+//         resolve(colums);
+//       })
+//       connection.execSql(request)
+//       return "you are now logged in"
+//     });
+//   } 
 
-module.exports.adminLogin = adminLogin;
+// module.exports.login = login;
+
+
+
+
+
+
+
+
+// function adminLogin (payload) {
+//     return new Promise((resolve, reject) => {
+//     const sql = 'SELECT * FROM [user] where isAdmin = @isAdmin'
+//     const request = new Request(sql,(err,rowcount) =>{
+//         if (err){
+//             reject(err)
+//             console.log(err)
+//         } else if( rowcount == 0){
+//             reject({message: "you are not admin!"});
+//         }
+//     });
+  
+//       request.addParameter('isAdmin', TYPES.VarChar, payload.isAdmin)
+
+//       request.on('row',(colums) => {
+//         resolve(colums);
+//       })
+//       connection.execSql(request)
+//       return "you are now logged in as Admin"
+//     });
+//   } 
+
+// module.exports.adminLogin = adminLogin;
