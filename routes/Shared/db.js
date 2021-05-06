@@ -102,10 +102,6 @@ function login (payload) {
         resolve(colums);
       })
       connection.execSql(request)
-      const accessToken = jwt.sign({ email: payload.email,  pass: payload.password,  });
-        
-             res.json({
-              accessToken});
       return "you are now logged in"
     });
   } 
@@ -127,16 +123,14 @@ function adminLogin (payload) {
   
       request.addParameter('email', TYPES.VarChar, payload.email)
       request.addParameter('password', TYPES.VarChar, payload.password)
-      request.addParameter('isAdmin', TYPES.Numeric, payload.isAdmin)
+      request.addParameter('isAdmin', TYPES.VarChar, payload.isAdmin)
 
       request.on('row',(colums) => {
         resolve(colums);
       })
       connection.execSql(request)
       
-        
-             res.json({
-              accessToken});
+   
       return "you are now logged in"
     });
   } 

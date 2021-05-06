@@ -45,7 +45,7 @@ export default {
     return {
       email: "",
       password: "",
-      isAdmin:""
+      isAdmin: "",
     };
   },
   methods: {

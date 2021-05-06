@@ -32,6 +32,7 @@ async function post(context, req){
 
         context.res = {
             status: 200,
+            email: payload.email
         }
     } catch(error){
         context.res = {
