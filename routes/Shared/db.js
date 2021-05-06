@@ -82,6 +82,7 @@ function select(firstName){
 }
 module.exports.select = select;
 
+// LOGIN 
 function login (payload) {
     return new Promise((resolve, reject) => {
     const sql = 'SELECT * FROM [user] where email = @email AND password = @password'
@@ -110,6 +111,7 @@ function login (payload) {
   } 
 
 module.exports.login = login;
+
 
 function adminLogin (payload) {
     return new Promise((resolve, reject) => {

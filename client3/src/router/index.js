@@ -4,7 +4,8 @@ import Register from '@/components/Register'
 import Login from '@/components/Login'
 import Profile from '@/components/Profile'
 import Swipe from '@/components/Swipe'
-import AdminLogin from '@/components/adminLogin'
+import AdminLogin from '@/components/AdminLogin'
+import UpdateUser from '@/components/UpdateUser'
 
 Vue.use(Router)
 
@@ -34,6 +35,11 @@ export default new Router({
             path: '/adminLogin',
             name: 'AdminLogin',
             component: AdminLogin
+        },
+        {
+            path: '/updateUser',
+            name: 'UpdateUser',
+            component: UpdateUser
         }
     ]
     

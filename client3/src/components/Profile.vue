@@ -14,8 +14,42 @@
           <button class="btn btn-primary btn-block btn-lg">SWIPE LØØØS</button>
         </div>
         <div>Vil du swipe løøøs? <router-link to="/swipe">Swipe</router-link></div>
+
+      </form>
+
+        <h2>UPDATE</h2>
+        <form @submit.prevent="onSubmit">
+        
+        <div class="form-group">
+          <button class="btn btn-primary btn-block btn-lg">VIL DU UPDATE?</button>
+        </div>
+        <div>VIL DU UPDATE?<router-link to="/updateUser">Update</router-link></div>
+
       </form>
      </div>
 
 </template>
+
+<script>
+
+import axios from 'axios' 
+
+export default {
+  name: 'Home',
+
+  async created() {
+    const response = await axios.get('user', {
+
+      headers: {
+      Authorization: 'Bearer' + localStorage.getItem('token') 
+      }
+    });
+
+    console.log(response)
+
+  }
+
+}
+
+</script>
 
