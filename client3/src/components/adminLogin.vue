@@ -51,7 +51,7 @@ export default {
   methods: {
     onSubmit() {
       axios
-        .post("http://127.0.0.1:7071/api/adminLogin/", {
+        .post("http://127.0.0.1:7071/api/SpecialLogin", {
           email: this.email,
           password: this.password,
           isAdmin: this.isAdmin,
