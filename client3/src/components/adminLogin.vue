@@ -20,6 +20,15 @@
             class="form-control"
           />
         </div>
+          <div class="form-group">
+          <input
+            type="isAdmin"
+            id="isAdmin"
+            v-model="isAdmin"
+            placeholder="Are u Admin?"
+            class="form-control"
+          />
+        </div>
         <div class="form-group">
           <button class="btn btn-primary btn-block btn-lg">ADMIN Login</button>
         </div>
@@ -35,15 +44,17 @@ export default {
   data() {
     return {
       email: "",
-      password: ""
+      password: "",
+      isAdmin:""
     };
   },
   methods: {
     onSubmit() {
       axios
-        .post("http://127.0.0.1:7071/api/login/", {
+        .post("http://127.0.0.1:7071/api/SpecialLogin", {
           email: this.email,
           password: this.password,
+          isAdmin: this.isAdmin,
         })
         .then((response) => {
 
