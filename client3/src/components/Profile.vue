@@ -32,12 +32,14 @@
 
 <script>
 
-import axios from 'axios' 
-
 export default {
   name: 'Home',
 
   async created() {
+
+    if(!localStorage.getItem("email")) {
+      this.$router.push({ path : '/login' });
+    }
     //const response = await axios.get('user', {
 
       // headers: {
