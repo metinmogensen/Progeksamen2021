@@ -127,7 +127,7 @@ function adminLogin (payload) {
   
       request.addParameter('email', TYPES.VarChar, payload.email)
       request.addParameter('password', TYPES.VarChar, payload.password)
-      request.addParameter('isAdmin', TYPES.VarChar, payload.isAdmin)
+      request.addParameter('isAdmin', TYPES.Numeric, payload.isAdmin)
 
       request.on('row',(colums) => {
         resolve(colums);

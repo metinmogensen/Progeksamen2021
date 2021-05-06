@@ -31,7 +31,8 @@
 
 <script>
 import axios from "axios";
-import JWT from 'jsonwebtoken';
+import jwt from 'jsonwebtoken';
+const accessTokenSecret = 'youraccesstokensecret';
 
 export default {
   name: 'Login', 
@@ -50,10 +51,10 @@ export default {
         })
         .then((response) => {
           if (response.data.accessToken){
-            localStorage.setItem('user', JSON.stringify(response.data));
-          }
+          const accessToken = jwt.sign({email,password}, JSON.stringify(response.data)
+          )}
 
-          return response.data
+          return accessToken
 
 
           //redirect logic
