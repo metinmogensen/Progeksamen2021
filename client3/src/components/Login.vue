@@ -52,6 +52,7 @@ export default {
   //           localStorage.setItem('user', JSON.stringify(response.data));
   //         }
 
+<<<<<<< HEAD
   //         return response.data
 
 
@@ -60,6 +61,14 @@ export default {
   //           alert("Now login after u clicked OK!")
   //           this.$router.push({ path : '/profile' });
   //         }
+=======
+          //redirect logic
+          if (response.status == 200) {
+            localStorage.setItem("email", response.data);
+            alert("Now login after u clicked OK!")
+            this.$router.push({ path : '/profile' });
+          }
+>>>>>>> d7be103e2b085d594a1a5e34c0058b1d3f2df705
           
   //       })
   //       .catch((error) => {

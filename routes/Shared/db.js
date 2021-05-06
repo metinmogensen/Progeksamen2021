@@ -99,7 +99,7 @@ function login (payload) {
       request.addParameter('password', TYPES.VarChar, payload.password)
 
       request.on('row',(colums) => {
-        resolve(colums);
+        resolve(payload.email);
       })
       connection.execSql(request)
       return "you are now logged in"
