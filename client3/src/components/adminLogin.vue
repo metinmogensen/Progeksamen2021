@@ -61,7 +61,7 @@ export default {
           //redirect logic
           if (response.status == 200) {
             alert("Now login after u clicked OK!")
-            this.$router.push({ path : '/profile/admin' });
+            this.$router.push({ path : '/profile' });
           }
           
         })
