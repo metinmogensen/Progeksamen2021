@@ -1,7 +1,7 @@
 const { Connection, Request, TYPES } = require('tedious');
 const config = require('../../config.json');
-const {jwt} = require('jsonwebtoken')
-const accessTokenSecret = 'youraccesstokensecret';
+// const {jwt} = require('jsonwebtoken')
+// const accessTokenSecret = 'youraccesstokensecret';
 
 
 
