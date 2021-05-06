@@ -1,13 +1,43 @@
+const db = require("../routes/Shared/db");
+// const {jwt} = require('jsonwebtoken')
+// const accessTokenSecret = 'youraccesstokensecret';
+
+
 module.exports = async function (context, req) {
-    context.log('JavaScript HTTP trigger function processed a request.');
+    context.log('JavaScript Login HTTP trigger function processed a request.');
 
-    const name = (req.query.name || (req.body && req.body.name));
-    const responseMessage = name
-        ? "Hello, " + name + ". This HTTP triggered function executed successfully."
-        : "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response.";
+    try{
+        await db.startDb(); //start db forbbindelse
+    } catch (error) {
+        console.log("Error connecting to the database", error.message);
+    }
+    switch(req.method) {
+        case 'POST':
+            await post(context, req);
+            break;
+        default:
+            context.res = {
+                status: 200,
+                body: "please get or post"
+            };
+            break;
+    }
+}
 
-    context.res = {
-        // status: 200, /* Defaults to 200 */
-        body: responseMessage
-    };
+
+async function post(context, req){
+    try{
+        let payload = req.body;
+        await db.adminLogin(payload);
+
+        context.res = {
+            status: 200,
+        }
+    } catch(error){
+        context.res = {
+            status: 400,
+            body: error.message
+        }
+
+    }
 }
