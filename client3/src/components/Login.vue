@@ -51,6 +51,7 @@ export default {
 
           //redirect logic
           if (response.status == 200) {
+            localStorage.setItem("email", response.payload);
             alert("Now login after u clicked OK!")
             this.$router.push({ path : '/profile' });
           }

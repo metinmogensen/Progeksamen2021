@@ -38,14 +38,14 @@ export default {
   name: 'Home',
 
   async created() {
-    const response = await axios.get('user', {
+    //const response = await axios.get('user', {
 
-      headers: {
-      Authorization: 'Bearer' + localStorage.getItem('token') 
-      }
-    });
+      // headers: {
+      //  Authorization: 'Bearer' + localStorage.getItem('token') 
+      // }
+    //});
 
-    console.log(response)
+
 
   }
 

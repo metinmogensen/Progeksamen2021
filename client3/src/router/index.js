@@ -4,7 +4,7 @@ import Register from '@/components/Register'
 import Login from '@/components/Login'
 import Profile from '@/components/Profile'
 import Swipe from '@/components/Swipe'
-import AdminLogin from '@/components/AdminLogin'
+import AdminLogin from '@/components/adminLogin'
 import UpdateUser from '@/components/UpdateUser'
 
 Vue.use(Router)
