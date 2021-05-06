@@ -136,3 +136,29 @@ function adminLogin (payload) {
   } 
 
 module.exports.adminLogin = adminLogin;
+
+function updateUser(email,password){
+    
+        return new Promise((resolve,reject) => {
+            const sql = "UPDATE [user] set "
+            const request = new Request(sql,(err,rowcount) =>{
+                if (err){
+                    reject(err)
+                    console.log(err)
+                } else if( rowcount == 0){
+                    reject({messsage:"user does not exit"})
+                }
+            });
+            request.addParameter('email',TYPES.VarChar,email)
+            request.addParameter('password',TYPES.VarChar,password)
+        
+            request.on('row',(colums) => {
+                resolve(colums)
+            });
+            connection.execSql(request);
+        
+            return firstName
+        })
+}
+
+module.exports.updateUser  = updateUser;
