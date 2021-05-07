@@ -163,10 +163,10 @@ function updateUser(email,password){
 
 module.exports.updateUser  = updateUser;
 
-function deleteUser(email){
+function deleteUser(payload){
     
     return new Promise((resolve,reject) => {
-        const sql = "DELETE * FROM [user] where email = @email"
+        const sql = "Delete FROM [user] where email = @email"
         const request = new Request(sql,(err,rowcount) =>{
             if (err){
                 reject(err)
@@ -175,9 +175,11 @@ function deleteUser(email){
                 reject({messsage:"user does not exit"})
             }
         });
-        request.addParameter('email',TYPES.VarChar,email)
+        request.addParameter('email',TYPES.VarChar,payload.email)
     
-        request.on('done', function(rowCount, more) {  resolve(rowCount + ' rows returned');   });
+        request.on('row',(colums) => {
+            resolve(colums)
+        });
         connection.execSql(request);
     
     })
