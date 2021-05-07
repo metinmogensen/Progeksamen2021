@@ -126,7 +126,7 @@ function adminLogin (payload) {
       request.addParameter('isAdmin', TYPES.VarChar, payload.isAdmin)
 
       request.on('row',(colums) => {
-        resolve(colums);
+        resolve(payload.isAdmin);
       })
       connection.execSql(request)
       
@@ -163,10 +163,10 @@ function updateUser(email,password){
 
 module.exports.updateUser  = updateUser;
 
-function deleteUser(email,password){
+function deleteUser(email){
     
     return new Promise((resolve,reject) => {
-        const sql = "DELETE [user] WHERE email = @email"
+        const sql = "DELETE * FROM [user] where email = @email"
         const request = new Request(sql,(err,rowcount) =>{
             if (err){
                 reject(err)
@@ -176,14 +176,10 @@ function deleteUser(email,password){
             }
         });
         request.addParameter('email',TYPES.VarChar,email)
-        request.addParameter('password',TYPES.VarChar,password)
     
-        request.on('row',(colums) => {
-            resolve(colums)
-        });
+        request.on('done', function(rowCount, more) {  resolve(rowCount + ' rows returned');   });
         connection.execSql(request);
     
-        return firstName
     })
 }
 
