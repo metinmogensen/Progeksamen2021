@@ -60,6 +60,7 @@ export default {
 
           //redirect logic
           if (response.status == 200) {
+            localStorage.setItem("isAdmin", response.data);
             alert("Now login after u clicked OK!")
             this.$router.push({ path : '/profile' });
           }

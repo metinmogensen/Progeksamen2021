@@ -29,10 +29,11 @@ module.exports = async function (context, req) {
 async function post(context, req){
     try{
         let payload = req.body;
-        await db.adminLogin(payload);
+        let result = await db.adminLogin(payload);
 
         context.res = {
             status: 200,
+            body: result
         }
     } catch(error){
         context.res = {

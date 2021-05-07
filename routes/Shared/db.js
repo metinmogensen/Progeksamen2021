@@ -162,3 +162,29 @@ function updateUser(email,password){
 }
 
 module.exports.updateUser  = updateUser;
+
+function deleteUser(email,password){
+    
+    return new Promise((resolve,reject) => {
+        const sql = "DELETE [user] WHERE email = @email"
+        const request = new Request(sql,(err,rowcount) =>{
+            if (err){
+                reject(err)
+                console.log(err)
+            } else if( rowcount == 0){
+                reject({messsage:"user does not exit"})
+            }
+        });
+        request.addParameter('email',TYPES.VarChar,email)
+        request.addParameter('password',TYPES.VarChar,password)
+    
+        request.on('row',(colums) => {
+            resolve(colums)
+        });
+        connection.execSql(request);
+    
+        return firstName
+    })
+}
+
+module.exports.deleteUser  = deleteUser;
