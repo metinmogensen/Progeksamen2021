@@ -140,28 +140,28 @@ module.exports.adminLogin = adminLogin;
 
 
 // Update User
-function updateUser(email,password){
+function updateUser(payload){
     
         return new Promise((resolve,reject) => {
-            const sql = "UPDATE [user] set "
-            const request = new Request(sql,(err,rowcount) =>{
+            const sql = "UPDATE [user] SET email = @email WHERE password = @password AND firstName = @firstName"
+            const request = new Request(sql,(err) =>{
                 if (err){
                     reject(err)
                     console.log(err)
-                } else if( rowcount == 0){
-                    reject({messsage:"user does not exit"})
                 }
             });
-            request.addParameter('email',TYPES.VarChar,email)
-            request.addParameter('password',TYPES.VarChar,password)
+
+            request.addParameter('email',TYPES.VarChar,payload.email)
+            request.addParameter('password',TYPES.VarChar,payload.password)
+            request.addParameter('firstName',TYPES.VarChar,payload.firstName)
         
-            request.on('row',(colums) => {
-                resolve(colums)
-            });
+            request.on('requestCompleted',(row) => {
+                console.log("User updated", row);
+                resolve("user Updated:)", row)
+            })
             connection.execSql(request);
         
-            return firstName
-        })
+        });
 }
 
 module.exports.updateUser  = updateUser;
