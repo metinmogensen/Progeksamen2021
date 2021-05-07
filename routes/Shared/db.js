@@ -166,7 +166,7 @@ function updateUser(email,password){
 
 module.exports.updateUser  = updateUser;
 
-function deleteUser(email){
+function deleteUser(payload){
     
     return new Promise((resolve,reject) => {
         const sql = "DELETE * FROM [user] where email = @email"
@@ -175,10 +175,10 @@ function deleteUser(email){
                 reject(err)
                 console.log(err)
             } else if( rowcount == 0){
-                reject({messsage:"user does not exit"})
+                reject({messsage:"user can't be deleted"})
             }
         });
-        request.addParameter('email',TYPES.VarChar,email)
+        request.addParameter('email',TYPES.VarChar, payload.email)
     
         request.on('done', function(rowCount, more) {  resolve(rowCount + ' rows returned');   });
         connection.execSql(request);
