@@ -169,7 +169,7 @@ module.exports.updateUser  = updateUser;
 function deleteUser(payload){
     
     return new Promise((resolve,reject) => {
-        const sql = "Delete FROM [user] where email = @email"
+        const sql = "Delete FROM [user] where email = @email AND password = @password"
         const request = new Request(sql,(err,rowcount) =>{
             if (err){
                 reject(err)
@@ -179,6 +179,7 @@ function deleteUser(payload){
             }
         });
         request.addParameter('email',TYPES.VarChar, payload.email)
+        request.addParameter('password',TYPES.VarChar, payload.password)
     
         request.on('row',(colums) => {
             resolve(colums)
