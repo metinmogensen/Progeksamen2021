@@ -109,6 +109,7 @@ function login (payload) {
 module.exports.login = login;
 
 
+// Admin Login
 function adminLogin (payload) {
     return new Promise((resolve, reject) => {
     const sql = 'SELECT * FROM [user] where email = @email AND password = @password AND isAdmin = @isAdmin'
@@ -137,6 +138,8 @@ function adminLogin (payload) {
 
 module.exports.adminLogin = adminLogin;
 
+
+// Update User
 function updateUser(email,password){
     
         return new Promise((resolve,reject) => {
