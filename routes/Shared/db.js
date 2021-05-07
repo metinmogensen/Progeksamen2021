@@ -109,6 +109,7 @@ function login (payload) {
 module.exports.login = login;
 
 
+// Admin Login
 function adminLogin (payload) {
     return new Promise((resolve, reject) => {
     const sql = 'SELECT * FROM [user] where email = @email AND password = @password AND isAdmin = @isAdmin'
@@ -126,7 +127,7 @@ function adminLogin (payload) {
       request.addParameter('isAdmin', TYPES.VarChar, payload.isAdmin)
 
       request.on('row',(colums) => {
-        resolve(colums);
+        resolve(payload.isAdmin);
       })
       connection.execSql(request)
       
@@ -137,53 +138,53 @@ function adminLogin (payload) {
 
 module.exports.adminLogin = adminLogin;
 
-function updateUser(email,password){
+
+// Update User
+function updateUser(payload){
     
         return new Promise((resolve,reject) => {
-            const sql = "UPDATE [user] set "
-            const request = new Request(sql,(err,rowcount) =>{
+            const sql = "UPDATE [user] SET email = @email WHERE password = @password AND firstName = @firstName"
+            const request = new Request(sql,(err) =>{
                 if (err){
                     reject(err)
                     console.log(err)
-                } else if( rowcount == 0){
-                    reject({messsage:"user does not exit"})
                 }
             });
-            request.addParameter('email',TYPES.VarChar,email)
-            request.addParameter('password',TYPES.VarChar,password)
+
+            request.addParameter('email',TYPES.VarChar,payload.email)
+            request.addParameter('password',TYPES.VarChar,payload.password)
+            request.addParameter('firstName',TYPES.VarChar,payload.firstName)
         
-            request.on('row',(colums) => {
-                resolve(colums)
-            });
+            request.on('requestCompleted',(row) => {
+                console.log("User updated", row);
+                resolve("user Updated:)", row)
+            })
             connection.execSql(request);
         
-            return firstName
-        })
+        });
 }
 
 module.exports.updateUser  = updateUser;
 
-function deleteUser(email,password){
+function deleteUser(payload){
     
     return new Promise((resolve,reject) => {
-        const sql = "DELETE [user] WHERE email = @email"
+        const sql = "Delete FROM [user] where email = @email"
         const request = new Request(sql,(err,rowcount) =>{
             if (err){
                 reject(err)
                 console.log(err)
             } else if( rowcount == 0){
-                reject({messsage:"user does not exit"})
+                reject({messsage:"user can't be deleted"})
             }
         });
-        request.addParameter('email',TYPES.VarChar,email)
-        request.addParameter('password',TYPES.VarChar,password)
+        request.addParameter('email',TYPES.VarChar, payload.email)
     
         request.on('row',(colums) => {
             resolve(colums)
         });
         connection.execSql(request);
     
-        return firstName
     })
 }
 
