@@ -23,9 +23,8 @@ module.exports = async function (context, req) {
 
 async function deleteUserWithEmail(context, req){
     try{
-        let payload = req.query.email;
+        let payload = req.body
         let result = await db.deleteUser(payload);
-        console.log(context, req);
 
         context.res = {
             status: 200,
