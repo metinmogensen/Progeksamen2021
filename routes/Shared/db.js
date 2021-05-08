@@ -1,7 +1,7 @@
 const { Connection, Request, TYPES } = require('tedious');
 const config = require('../../config.json');
-// const {jwt} = require('jsonwebtoken')
-// const accessTokenSecret = 'youraccesstokensecret';
+var jwt = require('jsonwebtoken')
+
 
 
 
@@ -98,16 +98,23 @@ function login (payload) {
       request.addParameter('email', TYPES.VarChar, payload.email)
       request.addParameter('password', TYPES.VarChar, payload.password)
 
+
       request.on('row',(colums) => {
         resolve(payload.email);
       })
       connection.execSql(request)
-      return "you are now logged in"
+      return  "you are now logged in"
     });
   } 
 
 module.exports.login = login;
 
+function genToken(payload){
+    user = {email:payload.email, password:payload.password};
+    token = jwt.sign(user,"secretkey")
+    return token
+}
+module.exports.genToken = genToken;
 
 // Admin Login
 function adminLogin (payload) {

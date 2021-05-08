@@ -1,6 +1,6 @@
 const db = require("../routes/Shared/db");
-// const {jwt} = require('jsonwebtoken')
-// const accessTokenSecret = 'youraccesstokensecret';
+
+
 
 
 module.exports = async function (context, req) {
@@ -29,11 +29,12 @@ async function post(context, req){
     try{
         let payload = req.body;
         let result = await db.login(payload);
-        console.log(result);
+        let token = await db.genToken(payload);
+        console.log(result,token);
 
         context.res = {
             status: 200,
-            body: result
+            body: {result, token}
         }
     } catch(error){
         context.res = {
