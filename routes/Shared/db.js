@@ -116,6 +116,14 @@ function genToken(payload){
 }
 module.exports.genToken = genToken;
 
+function vertifyToken(payload){
+    const user = payload.token
+    const token = jwt.verify(user,"secretkey")
+    return token
+}
+
+module.exports.vertifyToken = vertifyToken;
+
 // Admin Login
 function adminLogin (payload) {
     return new Promise((resolve, reject) => {

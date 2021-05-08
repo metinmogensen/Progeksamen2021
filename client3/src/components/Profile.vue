@@ -46,7 +46,8 @@
 </template>
 
 <script>
-// import { response } from 'express';
+//import { response } from 'express';
+
 
 
 
@@ -86,27 +87,24 @@
 
 // });
 
+import axios from 'axios';
+export default {
+  
+  name: 'Home',
 
-// export default {
-//   name: 'Home',
+  async created() {
 
-//   async created() {
+    const response = await axios.post('http://127.0.0.1:7071/api/Iprotect/', {
 
-//     if(!localStorage.getItem("email")) {
-//       this.$router.push({ path : '/login' });
-//     }
-//     //const response = await axios.get('user', {
+      headers: {
+       Authorization: 'Bearer' + localStorage.getItem('token') 
+      }
+    })
+    if(!response)
+      this.$router.push({ path : '/login' });
+    }
+    
+    };
 
-//       // headers: {
-//       //  Authorization: 'Bearer' + localStorage.getItem('token') 
-//       // }
-//     //});
-
-
-
-//   }
-
-// }
 
 </script>
-

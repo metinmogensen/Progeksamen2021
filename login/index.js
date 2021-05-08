@@ -12,6 +12,9 @@ module.exports = async function (context, req) {
         console.log("Error connecting to the database", error.message);
     }
     switch(req.method) {
+        case 'GET':
+            await get(context, req);
+            break;
         case 'POST':
             await post(context, req);
             break;
@@ -35,6 +38,25 @@ async function post(context, req){
         context.res = {
             status: 200,
             body: {result, token}
+        }
+    } catch(error){
+        context.res = {
+            status: 400,
+            body: error.message
+        }
+
+    }
+}
+
+async function get(context, req){
+    try{
+        let payload = req.body
+        result = await db.vertifyToken(payload);
+        console.log(result)
+
+        context.res = {
+            status: 200,
+    
         }
     } catch(error){
         context.res = {
