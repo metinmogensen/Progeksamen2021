@@ -23,36 +23,6 @@
             placeholder="Fornavn"
             class="form-control"
           />
-          <input
-            type="text"
-            v-model="lastName"
-            placeholder="Efternavn"
-            class="form-control"
-          />
-          <input
-            type="number"
-            v-model="age"
-            placeholder="Alder"
-            class="form-control"
-          />
-          <input
-            type="text"
-            v-model="gender"
-            placeholder="Køn"
-            class="form-control"
-          />
-          <input
-            type="text"
-            v-model="preferredGender"
-            placeholder="Hvem foretrækker du"
-            class="form-control"
-          />
-          <input
-            type="text"
-            v-model="hotel"
-            placeholder="Hotel"
-            class="form-control"
-          />
           <button class="btn btn-primary btn-block btn-lg">Update</button>
         <div>Vil du alligevel ikke update? <router-link to="/Profile">Go back to profile</router-link></div>
       </form>
@@ -67,13 +37,8 @@ export default {
   data() {
     return {
       firstName: "",
-      lastName: "",
-      gender: "",
       email: "",
       password: "",
-      age: "",
-      hotel: "",
-      preferredGender: "",
     };
   },
   methods: {
@@ -81,13 +46,8 @@ export default {
       axios
         .put("http://localhost:7071/api/updateUser", { //API skal være updateUser?
           firstName: this.firstName,
-          lastName: this.lastName,
-          gender: this.gender,
           email: this.email,
-          password: this.password,
-          age: this.age,
-          hotel: this.hotel,
-          preferredGender: this.preferredGender
+          password: this.password
         })
         .then((response) => {
 

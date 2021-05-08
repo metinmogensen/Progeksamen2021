@@ -1,7 +1,6 @@
 
 
 <template>
-<div id="app">
     <div>
         <h1>Tillykke!</h1>
         <p>Du er ankommet til Hoetell 2021. </p>
@@ -40,36 +39,46 @@
 
       </form>
 
+      <h2>Delete User</h2>
+        <form @submit.prevent="Delete">
+        
+        <div class="form-group">
+          <button @submit.prevent="deleteUser()">Logout</button>
+        </div>
+        <div>Vil du delete din user? <router-link to="/deleteUser">Delete</router-link></div>
+
+      </form>
+
      </div>
     
-</div>
+
 </template>
 
 <script>
-import { response } from 'express';
+// import { response } from 'express';
 
 
 
-export default {
-  name: 'Logout', 
-  data() {
-    return {
-      email: ""
-    };
-  },
-  methods: {
-    logOut() {
-      axios.post("http://127.0.0.1:7071/api/login/"), {
-        email: this.email,
-      })
-      .then ((response)) => {
+// export default {
+//   name: 'Logout', 
+//   data() {
+//     return {
+//       email: ""
+//     };
+//   },
+//   methods: {
+//     logOut() {
+//       axios.post("http://127.0.0.1:7071/api/login/"), {
+//         email: this.email,
+//       })
+//       .then ((response)) => {
         
-      return new Promise((resolve, reject) => {
-        localStorage.removeItem("email");
-      });
-    }
-  }
-};
+//       return new Promise((resolve, reject) => {
+//         localStorage.removeItem("email");
+//       });
+//     }
+//   }
+// };
 
 // new Vue({
 // el: '#app',
