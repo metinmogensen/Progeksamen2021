@@ -51,7 +51,8 @@ export default {
           
           //redirect logic
            if (response.status == 200) {
-             localStorage.setItem("email", response.data);
+             localStorage.setItem("email", response.data.email);
+             localStorage.setItem("token", response.data.token);
              alert("Now login after u clicked OK!")
              this.$router.push({ path : '/profile' });
            }
