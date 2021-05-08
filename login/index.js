@@ -1,6 +1,6 @@
 const db = require("../routes/Shared/db");
-// const {jwt} = require('jsonwebtoken')
-// const accessTokenSecret = 'youraccesstokensecret';
+
+
 
 
 module.exports = async function (context, req) {
@@ -12,6 +12,9 @@ module.exports = async function (context, req) {
         console.log("Error connecting to the database", error.message);
     }
     switch(req.method) {
+        case 'GET':
+            await get(context, req);
+            break;
         case 'POST':
             await post(context, req);
             break;
@@ -29,11 +32,31 @@ async function post(context, req){
     try{
         let payload = req.body;
         let result = await db.login(payload);
-        console.log(result);
+        let token = await db.genToken(payload);
+        console.log(result,token);
 
         context.res = {
             status: 200,
-            body: result
+            body: {result, token}
+        }
+    } catch(error){
+        context.res = {
+            status: 400,
+            body: error.message
+        }
+
+    }
+}
+
+async function get(context, req){
+    try{
+        let payload = req.body
+        result = await db.vertifyToken(payload);
+        console.log(result)
+
+        context.res = {
+            status: 200,
+    
         }
     } catch(error){
         context.res = {

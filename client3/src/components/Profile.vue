@@ -55,7 +55,12 @@
 </template>
 
 <script>
+<<<<<<< HEAD
 // import { response } from 'express';
+=======
+//import { response } from 'express';
+
+>>>>>>> 6c3401ea0c11380377b637d99616d85512c3f4a6
 
 
 
@@ -77,8 +82,12 @@
 //         localStorage.removeItem("email");
 //       });
 //     }
+<<<<<<< HEAD
 //   }
 // };
+=======
+//   };
+>>>>>>> 6c3401ea0c11380377b637d99616d85512c3f4a6
 
 // new Vue({
 // el: '#app',
@@ -96,27 +105,24 @@
 
 // });
 
+import axios from 'axios';
+export default {
+  
+  name: 'Home',
 
-// export default {
-//   name: 'Home',
+  async created() {
 
-//   async created() {
+    const response = await axios.post('http://127.0.0.1:7071/api/Iprotect/', {
 
-//     if(!localStorage.getItem("email")) {
-//       this.$router.push({ path : '/login' });
-//     }
-//     //const response = await axios.get('user', {
+      headers: {
+       Authorization: 'Bearer' + localStorage.getItem('token') 
+      }
+    })
+    if(!response)
+      this.$router.push({ path : '/login' });
+    }
+    
+    };
 
-//       // headers: {
-//       //  Authorization: 'Bearer' + localStorage.getItem('token') 
-//       // }
-//     //});
-
-
-
-//   }
-
-// }
 
 </script>
-
