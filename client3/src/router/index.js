@@ -6,6 +6,7 @@ import Profile from '@/components/Profile'
 import Swipe from '@/components/Swipe'
 import UpdateUser from '@/components/UpdateUser'
 
+
 Vue.use(Router)
 
 export default new Router({
