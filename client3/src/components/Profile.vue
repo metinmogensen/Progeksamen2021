@@ -55,12 +55,7 @@
 </template>
 
 <script>
-<<<<<<< HEAD
 // import { response } from 'express';
-=======
-//import { response } from 'express';
-
->>>>>>> 6c3401ea0c11380377b637d99616d85512c3f4a6
 
 
 
@@ -82,12 +77,8 @@
 //         localStorage.removeItem("email");
 //       });
 //     }
-<<<<<<< HEAD
 //   }
 // };
-=======
-//   };
->>>>>>> 6c3401ea0c11380377b637d99616d85512c3f4a6
 
 // new Vue({
 // el: '#app',
