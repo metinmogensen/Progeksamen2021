@@ -20,15 +20,6 @@
             class="form-control"
           />
         </div>
-          <div class="form-group">
-          <input
-            type="isAdmin"
-            id="isAdmin"
-            v-model="isAdmin"
-            placeholder="Are u Admin?"
-            class="form-control"
-          />
-        </div>
         <div class="form-group">
           <button class="btn btn-primary btn-block btn-lg">ADMIN Login</button>
         </div>
