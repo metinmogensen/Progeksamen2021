@@ -205,3 +205,29 @@ function deleteUser(payload){
 }
 
 module.exports.deleteUser  = deleteUser;
+
+//Delete match
+function deleteMatch(payload){
+    
+    return new Promise((resolve,reject) => {
+        let sql = "Delete FROM [match] where matchId = @matchId"
+        let request = new Request(sql,(err,rowcount) =>{
+            if (err){
+                reject(err)
+                console.log(err)
+            } else if( rowcount == 0){
+                reject({messsage:"match can't be deleted"})
+            }
+        });
+        request.addParameter('matchId',TYPES.VarChar, payload.matchId)
+
+    
+        request.on('row',(colums) => {
+            resolve(colums)
+        });
+        connection.execSql(request);
+    
+    })
+}
+
+module.exports.deleteMatch  = deleteMatch;
