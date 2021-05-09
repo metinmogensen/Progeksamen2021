@@ -243,11 +243,9 @@ function insert(payload){
             }
 
         });
-
-        //request.addParameter('userId',TYPES.VarChar,payload.userId)
         request.addParameter('likeOrDislike',TYPES.VarChar,payload.likeOrDislike)
         request.addParameter('userId',TYPES.VarChar,payload.userId)
-        request.addParameter('likedUserId',TYPES.VarChar,payload.gender)
+        request.addParameter('likedUserId',TYPES.VarChar,payload.likedUserId)
         request.on("requestCompleted",(row) => {
             console.log("Like inserted", row);
             resolve("like Inserted", row)
