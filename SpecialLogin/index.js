@@ -30,10 +30,11 @@ async function post(context, req){
     try{
         let payload = req.body;
         let result = await db.adminLogin(payload);
+        let token = await db.genToken(payload);
 
         context.res = {
             status: 200,
-            body: result
+            body: {result,token}
         }
     } catch(error){
         context.res = {
