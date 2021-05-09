@@ -37,7 +37,7 @@ async function post(context, req){
 
         context.res = {
             status: 200,
-            body: {result, token}
+            body: {token}
         }
     } catch(error){
         context.res = {

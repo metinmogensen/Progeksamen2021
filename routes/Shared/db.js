@@ -117,9 +117,15 @@ function genToken(payload){
 module.exports.genToken = genToken;
 
 function vertifyToken(payload){
+    return new Promise((resolve, reject) => {
     const user = payload.token
     const token = jwt.verify(user,"secretkey")
-    return token
+    if (token.email){
+        resolve({status: 200})     
+    }else{
+        reject({message:"this is not valid"})
+    }
+    })
 }
 
 module.exports.vertifyToken = vertifyToken;
