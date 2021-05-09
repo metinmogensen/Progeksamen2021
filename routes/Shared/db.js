@@ -127,7 +127,7 @@ module.exports.vertifyToken = vertifyToken;
 // Admin Login
 function adminLogin (payload) {
     return new Promise((resolve, reject) => {
-    const sql = 'SELECT * FROM [user] where email = @email AND password = @password AND isAdmin = @isAdmin'
+    const sql = 'SELECT * FROM [admin] where email = @email AND password = @password'
     const request = new Request(sql,(err,rowcount) =>{
         if (err){
             reject(err)
@@ -139,7 +139,6 @@ function adminLogin (payload) {
   
       request.addParameter('email', TYPES.VarChar, payload.email)
       request.addParameter('password', TYPES.VarChar, payload.password)
-      request.addParameter('isAdmin', TYPES.VarChar, payload.isAdmin)
 
       request.on('row',(colums) => {
         resolve(payload.isAdmin);
@@ -231,3 +230,31 @@ function deleteMatch(payload){
 }
 
 module.exports.deleteMatch  = deleteMatch;
+
+//Like
+function insert(payload){
+    return new Promise((resolve, reject) => {
+        const sql = `INSERT INTO [like] (likeOrDislike, userId, likedUserId) VALUES(@likeOrDislike, @userId, @likedUserId)`
+        const request = new Request(sql,(err) => {
+            if(err){
+                reject(err)
+                console.log(err)
+            }
+
+        });
+
+        //request.addParameter('userId',TYPES.VarChar,payload.userId)
+        request.addParameter('likeOrDislike',TYPES.VarChar,payload.likeOrDislike)
+        request.addParameter('userId',TYPES.VarChar,payload.userId)
+        request.addParameter('likedUserId',TYPES.VarChar,payload.gender)
+        request.on("requestCompleted",(row) => {
+            console.log("Like inserted", row);
+            resolve("like Inserted", row)
+        })
+        connection.execSql(request);
+
+    });
+}
+
+
+//Dislike

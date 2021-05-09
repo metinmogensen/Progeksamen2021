@@ -7,6 +7,7 @@ import Swipe from '@/components/Swipe'
 import UpdateUser from '@/components/UpdateUser'
 import SpecialLogin from '@/components/SpecialLogin'
 
+
 Vue.use(Router)
 
 
