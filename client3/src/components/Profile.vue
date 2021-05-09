@@ -55,6 +55,10 @@
 </template>
 
 <script>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9d374c989cf1284fd2a6bb7d56bd0cc8f0f5505a
 // import { response } from 'express';
 
 
@@ -77,8 +81,17 @@
 //         localStorage.removeItem("email");
 //       });
 //     }
+<<<<<<< HEAD
 //   }
 // };
+=======
+
+//   }
+// };
+
+//   };
+
+>>>>>>> 9d374c989cf1284fd2a6bb7d56bd0cc8f0f5505a
 
 // new Vue({
 // el: '#app',
