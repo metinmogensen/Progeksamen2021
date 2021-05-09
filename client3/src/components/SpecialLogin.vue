@@ -32,6 +32,8 @@
 import axios from "axios";
 export default {
   name: 'SpecialLogin', 
+  
+
   data() {
     return {
       email: "",

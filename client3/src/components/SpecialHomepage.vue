@@ -106,19 +106,22 @@ export default {
   
   name: 'Home',
 
-  async created() {
-
-    const response = await axios.post('http://127.0.0.1:7071/api/Iprotect/', {
-
-      headers: {
-       Authorization: 'Bearer' + localStorage.getItem('token') 
-      }
-    })
-    if(!response)
-      this.$router.push({ path : '/login' });
-    }
+   created() {
+    let token = localStorage.getItem('token')
+       axios
+        .post("http://127.0.0.1:7071/api/Iprotect/", {
+        token: token
+        })
+        .then((response) => {
+          console.log(response);
+          
+        })
+        .catch((error) => {
+                      alert("login again")
+          this.$router.push({ path : '/login' });
+          console.log(error);
+        });
     
-    };
-
-
+    }
+}
 </script>

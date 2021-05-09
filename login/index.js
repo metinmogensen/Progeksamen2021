@@ -33,7 +33,7 @@ async function post(context, req){
         let payload = req.body;
         let result = await db.login(payload);
         let token = await db.genToken(payload);
-        console.log(result,token);
+        console.log(token);
 
         context.res = {
             status: 200,
