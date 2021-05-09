@@ -10,6 +10,7 @@ import SpecialLogin from '@/components/SpecialLogin'
 
 Vue.use(Router)
 
+
 export default new Router({
     routes: [
         {

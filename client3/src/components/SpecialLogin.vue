@@ -45,7 +45,6 @@ export default {
     return {
       email: "",
       password: "",
-      isAdmin: "",
     };
   },
   methods: {
@@ -54,13 +53,12 @@ export default {
         .post("http://localhost:7071/api/SpecialLogin", {
           email: this.email,
           password: this.password,
-          isAdmin: this.isAdmin,
         })
         .then((response) => {
 
           //redirect logic
           if (response.status == 200) {
-            localStorage.setItem("isAdmin", response.data);
+           localStorage.setItem("token", response.data.token);
             alert("Now login after u clicked OK!")
             this.$router.push({ path : '/profile' });
           }

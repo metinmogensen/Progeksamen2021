@@ -127,7 +127,7 @@ module.exports.vertifyToken = vertifyToken;
 // Admin Login
 function adminLogin (payload) {
     return new Promise((resolve, reject) => {
-    const sql = 'SELECT * FROM [user] where email = @email AND password = @password AND isAdmin = @isAdmin'
+    const sql = 'SELECT * FROM [admin] where email = @email AND password = @password'
     const request = new Request(sql,(err,rowcount) =>{
         if (err){
             reject(err)
@@ -139,7 +139,6 @@ function adminLogin (payload) {
   
       request.addParameter('email', TYPES.VarChar, payload.email)
       request.addParameter('password', TYPES.VarChar, payload.password)
-      request.addParameter('isAdmin', TYPES.VarChar, payload.isAdmin)
 
       request.on('row',(colums) => {
         resolve(payload.isAdmin);
