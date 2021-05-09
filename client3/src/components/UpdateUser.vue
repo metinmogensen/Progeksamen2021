@@ -3,6 +3,7 @@
     <div class="container">
       <div id="errorbox" style="color: red"></div><br>
       <form @submit.prevent="onSubmit">
+        <h1>Her kan du opdatere dine oplysninger: </h1>
           <input
             type="email"
             id="email"
@@ -24,7 +25,7 @@
             class="form-control"
           />
           <button class="btn btn-primary btn-block btn-lg">Update</button>
-        <div>Vil du alligevel ikke update? <router-link to="/Profile">Go back to profile</router-link></div>
+        <div>Vil du alligevel ikke update? <router-link to="/Profile">Tilbage til min profil</router-link></div>
       </form>
     </div>
   </div>

@@ -6,9 +6,11 @@ import Profile from '@/components/Profile'
 import Swipe from '@/components/Swipe'
 import UpdateUser from '@/components/UpdateUser'
 import SpecialLogin from '@/components/SpecialLogin'
-
+import SpecialHomepage from '@/components/SpecialHomepage'
+import SpecialUpdateUser from '@/components/SpecialUpdateUser'
 
 Vue.use(Router)
+
 
 export default new Router({
     routes: [
@@ -41,7 +43,17 @@ export default new Router({
             path: '/SpecialLogin',
             name: 'SpecialLogin',
             component: SpecialLogin
+        }, {
+            path: '/SpecialHomepage',
+            name: 'SpecialHomepage',
+            component: SpecialHomepage
+        },
+        {
+            path: '/SpecialUpdateUser',
+            name: 'SpecialUpdateUser',
+            component: SpecialUpdateUser
         }
+
     ]
     
 })

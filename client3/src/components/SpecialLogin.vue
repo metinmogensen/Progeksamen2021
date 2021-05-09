@@ -20,15 +20,6 @@
             class="form-control"
           />
         </div>
-          <div class="form-group">
-          <input
-            type="isAdmin"
-            id="isAdmin"
-            v-model="isAdmin"
-            placeholder="Are u Admin?"
-            class="form-control"
-          />
-        </div>
         <div class="form-group">
           <button class="btn btn-primary btn-block btn-lg">ADMIN Login</button>
         </div>
@@ -60,7 +51,7 @@ export default {
           if (response.status == 200) {
            localStorage.setItem("token", response.data.token);
             alert("Now login after u clicked OK!")
-            this.$router.push({ path : '/profile' });
+            this.$router.push({ path : '/adminHomepage' });
           }
           
         })

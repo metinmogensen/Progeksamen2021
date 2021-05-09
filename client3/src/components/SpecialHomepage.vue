@@ -1,32 +1,32 @@
-
-
 <template>
     <div>
-        <h1>Tillykke!</h1>
-        <p>Du er ankommet til Hoetell 2021. </p>
-        <h3>Her kan du bolle med alle andre end din dame :')</h3>
+        <h1>ADMIN HOMEPAGE</h1>
+        <p></p>
+        <h3>  </h3>
        
    
     
 
-        <h2>SWIPE LØØØS</h2>
+        <h2>Se brugerliste </h2>
         <form @submit.prevent="onSubmit">
         
         <div class="form-group">
           <button class="btn btn-primary btn-block btn-lg">SWIPE LØØØS</button>
         </div>
-        <div>Vil du swipe løøøs? <router-link to="/swipe">Swipe</router-link></div>
+        <div>Se brugere af systemet <router-link to="/swipe">Brugere</router-link></div>
 
       </form>
 
-        <h2>UPDATE</h2>
+        <h2>UPDATER SYSTEMETS BRUGERE</h2>
         <form @submit.prevent="onSubmit">
         
         <div class="form-group">
-          <button class="btn btn-primary btn-block btn-lg">VIL DU UPDATE?</button>
         </div>
-        <div>VIL DU UPDATE?<router-link to="/updateUser">Update</router-link></div>
+        <form>
 
+        <div>VIL DU OPDATERE EN BRUGERS EMAIL?<router-link to="/SpecialUpdateUser"> OPDATER HER</router-link></div>
+        
+        </form>
       </form>
 
         <h2>LogOut</h2>
@@ -106,23 +106,19 @@ export default {
   
   name: 'Home',
 
-  created() {
-    let token = localStorage.getItem('token')
-       axios
-        .post("http://127.0.0.1:7071/api/Iprotect/", {
-        token: token
-        })
-        .then((response) => {
-          console.log(response);
-          
-        })
-        .catch((error) => {
-                      alert("login again")
-          this.$router.push({ path : '/login' });
-          console.log(error);
-        });
-    
+  async created() {
+
+    const response = await axios.post('http://127.0.0.1:7071/api/Iprotect/', {
+
+      headers: {
+       Authorization: 'Bearer' + localStorage.getItem('token') 
+      }
+    })
+    if(!response)
+      this.$router.push({ path : '/login' });
     }
-}
+    
+    };
+
 
 </script>

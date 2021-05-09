@@ -9,22 +9,23 @@ module.exports = async function (context, req) {
         console.log("Error connecting to the database", error.message);
     }
     switch(req.method) {
-        case 'POST':
-            await post(context, req);
+        case 'PUT':
+            await put(context, req);
             break;
         default:
             context.res = {
                 status: 200,
-                body: "please post"
+                body: "please get or post"
             };
             break;
     }
 }
 
-async function post(context, req){
+
+async function put(context, req){
     try{
         let payload = req.body;
-        await db.insert(payload);
+        await db.specialUpdateUserFirstName(payload);
         context.res = {
             status: 200,
         }
