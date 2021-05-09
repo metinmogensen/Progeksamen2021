@@ -155,7 +155,7 @@ module.exports.adminLogin = adminLogin;
 
 // Admin update email
 
-function specialUpdateUser(payload){
+function specialUpdateUserEmail(payload){
     
 
     return new Promise((resolve,reject) => {
@@ -183,7 +183,201 @@ function specialUpdateUser(payload){
     });
 }
 
-module.exports.specialUpdateUser  = specialUpdateUser;
+module.exports.specialUpdateUserEmail  = specialUpdateUserEmail;
+
+//Admin update password
+
+
+function specialUpdateUserPassword(payload){
+    
+
+    return new Promise((resolve,reject) => {
+        const sql = "UPDATE [user] SET password = @password WHERE userId = @userId"
+        const request = new Request(sql,(err) =>{
+            if (err){
+                reject(err)
+                console.log(err)
+            }
+        });
+
+
+        request.addParameter('password',TYPES.VarChar,payload.password)
+        request.addParameter('userId',TYPES.VarChar,payload.userId)
+
+
+    
+        request.on('requestCompleted',(row) => {
+            console.log("User updated", row);
+            resolve("user Updated:)", row)
+        })
+        connection.execSql(request);
+    
+
+    });
+}
+
+module.exports.specialUpdateUserPassword  = specialUpdateUserPassword;
+
+// Admin update age
+
+function specialUpdateUserAge(payload){
+    
+
+    return new Promise((resolve,reject) => {
+        const sql = "UPDATE [user] SET age = @age WHERE userId = @userId"
+        const request = new Request(sql,(err) =>{
+            if (err){
+                reject(err)
+                console.log(err)
+            }
+        });
+
+
+        request.addParameter('age',TYPES.VarChar,payload.age)
+        request.addParameter('userId',TYPES.VarChar,payload.userId)
+
+
+    
+        request.on('requestCompleted',(row) => {
+            console.log("User updated", row);
+            resolve("user Updated:)", row)
+        })
+        connection.execSql(request);
+    
+
+    });
+}
+
+module.exports.specialUpdateUserAge  = specialUpdateUserAge;
+
+// Admin update preferred gender
+
+function specialUpdateUserPreferredGender(payload){
+    
+
+    return new Promise((resolve,reject) => {
+        const sql = "UPDATE [user] SET preferredGender = @preferredGender WHERE userId = @userId"
+        const request = new Request(sql,(err) =>{
+            if (err){
+                reject(err)
+                console.log(err)
+            }
+        });
+
+
+        request.addParameter('preferredGender',TYPES.VarChar,payload.preferredGender)
+        request.addParameter('userId',TYPES.VarChar,payload.userId)
+
+
+    
+        request.on('requestCompleted',(row) => {
+            console.log("User updated", row);
+            resolve("user Updated:)", row)
+        })
+        connection.execSql(request);
+    
+
+    });
+}
+
+module.exports.specialUpdateUserPreferredGender  = specialUpdateUserPreferredGender;
+
+
+// Admin update firstname
+
+function specialUpdateUserFirstname(payload){
+    
+
+    return new Promise((resolve,reject) => {
+        const sql = "UPDATE [user] SET firstname = @firstname WHERE userId = @userId"
+        const request = new Request(sql,(err) =>{
+            if (err){
+                reject(err)
+                console.log(err)
+            }
+        });
+
+
+        request.addParameter('firstname',TYPES.VarChar,payload.firstName)
+        request.addParameter('userId',TYPES.VarChar,payload.userId)
+
+
+    
+        request.on('requestCompleted',(row) => {
+            console.log("User updated", row);
+            resolve("user Updated:)", row)
+        })
+        connection.execSql(request);
+    
+
+    });
+}
+
+module.exports.specialUpdateUserFirstname  = specialUpdateUserFirstname;
+
+// Admin update lastname
+
+function specialUpdateUserLastname(payload){
+    
+
+    return new Promise((resolve,reject) => {
+        const sql = "UPDATE [user] SET lastname = @lastname WHERE userId = @userId"
+        const request = new Request(sql,(err) =>{
+            if (err){
+                reject(err)
+                console.log(err)
+            }
+        });
+
+
+        request.addParameter('lastname',TYPES.VarChar,payload.lastName)
+        request.addParameter('userId',TYPES.VarChar,payload.userId)
+
+
+    
+        request.on('requestCompleted',(row) => {
+            console.log("User updated", row);
+            resolve("user Updated:)", row)
+        })
+        connection.execSql(request);
+    
+
+    });
+}
+
+module.exports.specialUpdateUserLastname  = specialUpdateUserLastname;
+
+// Admin update hotel
+
+function specialUpdateUserHotel(payload){
+    
+
+    return new Promise((resolve,reject) => {
+        const sql = "UPDATE [user] SET hotel = @hotel WHERE userId = @userId"
+        const request = new Request(sql,(err) =>{
+            if (err){
+                reject(err)
+                console.log(err)
+            }
+        });
+
+
+        request.addParameter('hotel',TYPES.VarChar,payload.hotel)
+        request.addParameter('userId',TYPES.VarChar,payload.userId)
+
+
+    
+        request.on('requestCompleted',(row) => {
+            console.log("User updated", row);
+            resolve("user Updated:)", row)
+        })
+        connection.execSql(request);
+    
+
+    });
+}
+
+module.exports.specialUpdateUserHotel  = specialUpdateUserHotel;
 
 // Update User
 function updateUser(payload){

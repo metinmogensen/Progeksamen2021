@@ -25,7 +25,7 @@ module.exports = async function (context, req) {
 async function put(context, req){
     try{
         let payload = req.body;
-        await db.specialUpdateUser(payload);
+        await db.specialUpdateUserFirstName(payload);
         context.res = {
             status: 200,
         }
