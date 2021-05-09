@@ -3,7 +3,7 @@
     <div class="container">
       <div id="errorbox" style="color: red"></div><br>
       <form @submit.prevent="onSubmit">
-        <h1>Her kan du opdatere dine oplysninger: </h1>
+        <h1>Her kan du opdatere emailen på en bruger af databasens? </h1>
           <input
             type="email"
             id="email"
@@ -12,20 +12,14 @@
             class="form-control"
           />
           <input
-            type="password"
-            id="password"
-            v-model="password"
-            placeholder="Password"
-            class="form-control"
-          />
-          <input
-            type="text"
-            v-model="firstName"
-            placeholder="Fornavn"
+            type="userId"
+            id="userId"
+            v-model="userId"
+            placeholder="userId"
             class="form-control"
           />
           <button class="btn btn-primary btn-block btn-lg">Update</button>
-        <div>Vil du alligevel ikke update? <router-link to="/Profile">Tilbage til min profil</router-link></div>
+        <div>Vil du alligevel ikke update? <router-link to="/SpecialHomepage">Tilbage til admin homepage</router-link></div>
       </form>
     </div>
   </div>
@@ -34,28 +28,26 @@
 <script>
 import axios from "axios";
 export default {
-  name: 'UpdateUser',
+  name: 'SpecialUpdateUser',
   data() {
     return {
-      firstName: "",
       email: "",
-      password: "",
+      userId: "",
     };
   },
   methods: {
     onSubmit() {
       axios
-        .put("http://localhost:7071/api/updateUser", { //API skal være updateUser?
-          firstName: this.firstName,
+        .put("http://localhost:7071/api/SpecialUpdateUser", { //API skal være updateUser?
           email: this.email,
-          password: this.password
+          userId: this.userId
         })
         .then((response) => {
 
           //redirect logic
           if (response.status == 200) {
             alert("Du har opdateret dine oplysninger!")
-            this.$router.push({ path : '/profile' });
+            this.$router.push({ path : '/SpecialHomepage' });
           }
           
         })

@@ -153,6 +153,38 @@ function adminLogin (payload) {
 module.exports.adminLogin = adminLogin;
 
 
+// Admin update email
+
+function specialUpdateUser(payload){
+    
+
+    return new Promise((resolve,reject) => {
+        const sql = "UPDATE [user] SET email = @email WHERE userId = @userId"
+        const request = new Request(sql,(err) =>{
+            if (err){
+                reject(err)
+                console.log(err)
+            }
+        });
+
+
+        request.addParameter('email',TYPES.VarChar,payload.email)
+        request.addParameter('userId',TYPES.VarChar,payload.userId)
+
+
+    
+        request.on('requestCompleted',(row) => {
+            console.log("User updated", row);
+            resolve("user Updated:)", row)
+        })
+        connection.execSql(request);
+    
+
+    });
+}
+
+module.exports.specialUpdateUser  = specialUpdateUser;
+
 // Update User
 function updateUser(payload){
     

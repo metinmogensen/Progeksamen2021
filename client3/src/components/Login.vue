@@ -24,7 +24,7 @@
           <button class="btn btn-primary btn-block btn-lg">Login</button>
         </div>
         <div>Ingen bruger? <router-link to="/">Register</router-link></div>
-        <div>Login som admin? <router-link to="/adminLogin">ADMIN</router-link></div>
+        <div>Login som admin? <router-link to="/SpecialLogin">ADMIN</router-link></div>
       </form>
     </div>
 </template>
