@@ -61,7 +61,7 @@
         <h1>Opdater LastName på en bruger: </h1>
           <input
             type="text"
-            id="LastName"
+            id="lastName"
             v-model="lastName"
             placeholder="LastName"
             class="form-control"

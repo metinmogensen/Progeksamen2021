@@ -28,7 +28,7 @@
 <script>
 import axios from "axios";
 export default {
-  name: 'SpecialDeleteUser',
+  name: 'SpecialDelete',
   data() {
     return {
     userId: "",
