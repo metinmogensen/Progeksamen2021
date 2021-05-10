@@ -382,8 +382,34 @@ function specialUpdateUserHotel(payload){
 
     });
 }
-
 module.exports.specialUpdateUserHotel  = specialUpdateUserHotel;
+
+//Admin delete user
+function specialDeleteUser(payload){
+    
+    return new Promise((resolve,reject) => {
+        const sql = "Delete FROM [user] where email = @email AND userId = @userId"
+        const request = new Request(sql,(err,rowcount) =>{
+            if (err){
+                reject(err)
+                console.log(err)
+            } else if( rowcount == 0){
+                reject({messsage:"user can't be deleted"})
+            }
+        });
+        request.addParameter('email',TYPES.VarChar, payload.email)
+        request.addParameter('userId',TYPES.VarChar, payload.userId)
+    
+        request.on('row',(colums) => {
+            resolve(colums)
+        });
+        connection.execSql(request);
+    
+    })
+}
+
+module.exports.specialDeleteUser  = specialDeleteUser;
+
 
 // Update User
 function updateUser(payload){
@@ -412,6 +438,7 @@ function updateUser(payload){
 
 module.exports.updateUser  = updateUser;
 
+//Deleting and user
 function deleteUser(payload){
     
     return new Promise((resolve,reject) => {

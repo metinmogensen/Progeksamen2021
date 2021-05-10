@@ -8,6 +8,7 @@ import UpdateUser from '@/components/UpdateUser'
 import SpecialLogin from '@/components/SpecialLogin'
 import SpecialHomepage from '@/components/SpecialHomepage'
 import SpecialUpdateUser from '@/components/SpecialUpdateUser'
+import SpecialDeleteUser from '@/components/SpecialDeleteUser'
 
 Vue.use(Router)
 
@@ -52,6 +53,11 @@ export default new Router({
             path: '/SpecialUpdateUser',
             name: 'SpecialUpdateUser',
             component: SpecialUpdateUser
+        },
+        {
+            path: '/specialDeleteUser',
+            name: 'SpecialDeleteUser',
+            component: SpecialDeleteUser
         }
 
     ]

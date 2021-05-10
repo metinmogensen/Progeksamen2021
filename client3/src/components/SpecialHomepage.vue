@@ -43,9 +43,8 @@
         <form @submit.prevent="Delete">
         
         <div class="form-group">
-          <button @submit.prevent="deleteUser()">Logout</button>
         </div>
-        <div>Vil du delete din user? <router-link to="/deleteUser">Delete</router-link></div>
+        <div>Vil du slette en bruger i systemet? <router-link to="/SpecialDeleteUser">SLET HER</router-link></div>
 
       </form>
 
