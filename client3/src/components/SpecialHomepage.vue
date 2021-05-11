@@ -1,4 +1,5 @@
 <template>
+<section>
     <div>
         <h1>ADMIN HOMEPAGE</h1>
         <p></p>
@@ -50,7 +51,7 @@
 
      </div>
     
-
+</section>
 </template>
 
 <script>
