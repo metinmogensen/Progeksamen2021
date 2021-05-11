@@ -25,7 +25,7 @@
             class="form-control"
           />
           <button class="btn btn-primary btn-block btn-lg">Update</button>
-        <div>Vil du alligevel ikke update? <router-link to="/Profile">Tilbage til min profil</router-link></div>
+        <div>Vil du alligevel ikke opdatere? <router-link to="/Profile">Tilbage til min profil</router-link></div>
       </form>
     </div>
   </div>

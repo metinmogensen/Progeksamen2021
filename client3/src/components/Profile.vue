@@ -31,9 +31,9 @@
         <form @submit.prevent="onSubmit">
         
         <div class="form-group">
-          <button class="btn btn-primary btn-block btn-lg">VIL DU UPDATE?</button>
+          
         </div>
-        <div>VIL DU UPDATE?<router-link to="/updateUser">Update</router-link></div>
+        <div>Vil du opdatere din bruger?<router-link to="/updateUser">  Opdater  </router-link></div>
 
       </form>
 
@@ -41,7 +41,7 @@
         <form @submit.prevent="LogOut">
         
         <div class="form-group">
-          <button @submit.prevent="logOut()">Logout</button>
+         
         </div>
         <div>Vil du logge ud? <router-link to="/login">Logout</router-link></div>
 
@@ -51,7 +51,7 @@
         <form @submit.prevent="Delete">
         
         <div class="form-group">
-          <button @submit.prevent="deleteUser()">Logout</button>
+          <button @submit.prevent="deleteUser()">delete user</button>
         </div>
         <div>Vil du delete din user? <router-link to="/deleteUser">Delete</router-link></div>
 
