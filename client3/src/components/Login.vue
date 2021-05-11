@@ -1,6 +1,7 @@
 
 <template>
     <div class="container">
+      <h1>Login</h1>
         <h1>{{ LOGIN }}</h1>
         <form @submit.prevent="onSubmit">
 
@@ -74,8 +75,6 @@ export default {
 
 
 </script>
-<style scoped>
 
-</style>
 
 

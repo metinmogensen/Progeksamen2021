@@ -1,17 +1,17 @@
 
 
 <template>
-<section>
+<section v-bind:class="isShake">
     <div>
-      <div class="h1">
+
         <h1>Tillykke!</h1>
-      </div>
-      <div class="p">
+
+
         <p>Du er ankommet til Hoetell 2021. </p>
-      </div>
-      <div class="h3">
-        <h3>Her kan du bolle med alle andre end din dame :')</h3>
-       </div>
+
+
+<p> ................................................................................................</p>
+
    
     
 <div></div>
@@ -148,6 +148,7 @@ body{
 		display: flex;
 		flex-direction:column;
 		justify-content:center;
+    
 }
 
 section{
@@ -158,17 +159,20 @@ section{
 	flex-direction:column;
 	/*margin-left:auto;
 	margin-right:auto;*/
+  
 }
 form{
 	display:flex;
 	flex-direction:column;
 	padding: 15px; 
+  text-align: center;
 }
 h2{
 	font-family: 'Archivo Black', sans-serif;
 	color:#e0dada;
 	margin-left:auto;
 	margin-right:auto;
+  text-align: center;
 }
 
 .info{
@@ -182,9 +186,9 @@ h2{
 }
 
 .info.error{
-	border:1px solid #a90e0;
+	border:1px solid #416d50;
 	background-color: #ff3c41;
-	color:#a90e0;
+	color:#e0dada;
 }
 .info p{
 	margin:auto;
@@ -244,5 +248,25 @@ button:hover{
 		width:90%;
 	}
 }
-
+h1{
+	font-family: 'Archivo Black', sans-serif;
+	color:#b18d8d;
+	margin-left:auto;
+	margin-right:auto;
+  text-align: center;
+}
+h3{
+	font-family: 'Archivo Black', sans-serif;
+	color:#e0dada;
+	margin-left:auto;
+	margin-right:auto;
+  text-align: center;
+}
+p{
+	font-family: 'Archivo Black', sans-serif;
+	color:#e0dada;
+	margin-left:auto;
+	margin-right:auto;
+  text-align: center;
+}
 </style>
