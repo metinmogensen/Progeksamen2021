@@ -495,7 +495,7 @@ module.exports.deleteMatch  = deleteMatch;
 //Like
 function insertLike(payload){
     return new Promise((resolve, reject) => {
-        const sql = `INSERT INTO [like] (likeOrDislike, userId, likedUserId) VALUES(@likeOrDislike, @userId, @likedUserId)`
+        const sql = `INSERT INTO [like] (likeOrDislike, userId, likedUserId) VALUES('like', @userId, @likedUserId)`
         const request = new Request(sql,(err) => {
             if(err){
                 reject(err)
@@ -514,6 +514,27 @@ function insertLike(payload){
 
     });
 }
-
 module.exports.insertLike  = insertLike;
 //Dislike
+function insertDislike(payload){
+    return new Promise((resolve, reject) => {
+        const sql = `INSERT INTO [like] (likeOrDislike, userId, likedUserId) VALUES('dislike', @userId, @likedUserId)`
+        const request = new Request(sql,(err) => {
+            if(err){
+                reject(err)
+                console.log(err)
+            }
+
+        });
+        request.addParameter('likeOrDislike',TYPES.VarChar,payload.likeOrDislike)
+        request.addParameter('userId',TYPES.VarChar,payload.userId)
+        request.addParameter('likedUserId',TYPES.VarChar,payload.likedUserId)
+        request.on("requestCompleted",(row) => {
+            console.log("Dislike inserted", row);
+            resolve("dislike Inserted", row)
+        })
+        connection.execSql(request);
+
+    });
+}
+module.exports.insertDislike  = insertDislike;

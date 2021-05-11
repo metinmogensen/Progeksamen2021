@@ -1,7 +1,11 @@
+
 <template>
+
     <div class="container">
+      <h1>Login</h1>
         <h1>{{ LOGIN }}</h1>
         <form @submit.prevent="onSubmit">
+
         <div class="form-group">
           <input
             type="email"
@@ -11,6 +15,7 @@
             class="form-control"
           />
         </div>
+
         <div class="form-group">
           <input
             type="password"
@@ -27,9 +32,11 @@
         <div>Login som admin? <router-link to="/SpecialLogin">ADMIN</router-link></div>
       </form>
     </div>
+
 </template>
 
 <script>
+
 import axios from "axios";
 
 export default {
@@ -70,8 +77,5 @@ export default {
 
 
 </script>
-<style scoped>
-
-</style>
 
 
