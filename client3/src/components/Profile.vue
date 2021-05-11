@@ -1,6 +1,7 @@
 
 
 <template>
+<section>
     <div>
       <div class="h1">
         <h1>Tillykke!</h1>
@@ -58,7 +59,7 @@
 
      </div>
     
-
+</section>
 </template>
 
 <script>
@@ -135,26 +136,113 @@ export default {
 </script>
 
 <style >
-.h1 {
-  padding-left: 400px;
-  align-items: center;
-  background-color: rgb(0, 255, 0);
+html, body{
+	width:100%;
+	height:100%;
+	margin:0px;
+	font-family: 'Work Sans', sans-serif;
 }
 
-.p{
-padding-left: 367px;
-align-items: center;
+body{
+		background-image:url('https://images-assets.nasa.gov/image/6900952/6900952~orig.jpg');
+		display: flex;
+		flex-direction:column;
+		justify-content:center;
 }
 
-.h3{
-padding-left: 280px;
-align-items: center;
+section{
+	background-color: rgba(0, 0, 0, 0.72);
+	width:25%;
+	min-height:25%;
+	display:flex;
+	flex-direction:column;
+	/*margin-left:auto;
+	margin-right:auto;*/
+}
+form{
+	display:flex;
+	flex-direction:column;
+	padding: 15px; 
+}
+h2{
+	font-family: 'Archivo Black', sans-serif;
+	color:#e0dada;
+	margin-left:auto;
+	margin-right:auto;
 }
 
-.h2{
-padding-left: 367px;
-align-items: center;
+.info{
+	width:100%;
+	text-align:center;
+	min-height:45px;
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	align-items:center;
 }
 
+.info.error{
+	border:1px solid #a90e0;
+	background-color: #ff3c41;
+	color:#a90e0;
+}
+.info p{
+	margin:auto;
+	padding:5px;
+}
+.info.good{
+	border:1px solid #416d50;
+	background-color: #47cf73;
+	color:#416d50;
+}
+
+input{
+	height:35px;
+	padding: 5px 5px;
+	margin: 10px 0px;
+	background-color:#e0dada;
+	border:none;
+}
+button{
+	height:40px;
+	padding: 5px 5px;
+	margin: 10px 0px;
+	font-weight:bold;
+	background-color:#be5256;
+	border:none;
+	color:#e0dada;
+	cursor:pointer;
+	font-size:16px;
+}
+button:hover{
+	background-color:#711f1b;
+}
+
+@-webkit-keyframes shake{
+	from, to{
+		-webkit-transform: translate3d(0, 0, 0);
+		transform:translate3d(0,0,0);
+	}
+	10%,30%,50%,70%,90%{
+		-webkit-transform: translate3d(-10px, 0, 0);
+		transform:translate3d(-10px,0,0);
+	}
+	20%,40%,60%,80%{
+		-webkit-transform: translate3d(10px, 0, 0);
+		transform:translate(10px,0,0);
+	}
+}
+
+.shake{
+	animation-name: shake;
+	animation-duration:1s;
+	/*animation-fill-mode: both;*/
+}
+
+@media screen and (max-width: 780px) {
+	section{
+		width:90%;
+	}
+}
 
 </style>
