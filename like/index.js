@@ -24,7 +24,7 @@ module.exports = async function (context, req) {
 async function post(context, req){
     try{
         let payload = req.body;
-        await db.insert(payload);
+        await db.insertLike(payload);
         context.res = {
             status: 200,
         }

@@ -1,4 +1,4 @@
-const { Connection, Request, TYPES } = require('tedious');
+const { Connection, Request, TYPES } = require('tedious'); //Loading the Tedious package that we use to connect to our SQL database
 const config = require('../../config.json');
 var jwt = require('jsonwebtoken')
 
@@ -28,11 +28,11 @@ module.exports.sqlConnection  = connection;
 //CREATE USER
 function insert(payload){
     return new Promise((resolve, reject) => {
-        const sql = `INSERT INTO [user] (firstName, lastName, gender, email, password, age, hotel, preferredGender) VALUES(@firstName, @lastName, @gender, @email, @password, @age, @hotel, @preferredGender)`
+        const sql = `INSERT INTO [user] (firstName, lastName, gender, email, password, age, hotel, preferredGender)VALUES(@firstName, @lastName, @gender, @email, @password, @age, @hotel, @preferredGender)`
         const request = new Request(sql,(err) => {
             if(err){
                 reject(err)
-                console.log(err)
+                console.log(err) // If an error occures it is logged in the console.
             }
 
         });
@@ -47,7 +47,7 @@ function insert(payload){
         request.addParameter('hotel',TYPES.VarChar,payload.hotel)
         request.addParameter('preferredGender',TYPES.VarChar,payload.preferredGender)
 
-        request.on("requestCompleted",(row) => {
+        request.on("requestCompleted",(row) => { //
             console.log("User inserted", row);
             resolve("user Inserted", row)
         })
@@ -491,7 +491,7 @@ function deleteMatch(payload){
 module.exports.deleteMatch  = deleteMatch;
 
 //Like
-function insert(payload){
+function insertLike(payload){
     return new Promise((resolve, reject) => {
         const sql = `INSERT INTO [like] (likeOrDislike, userId, likedUserId) VALUES(@likeOrDislike, @userId, @likedUserId)`
         const request = new Request(sql,(err) => {
@@ -513,5 +513,5 @@ function insert(payload){
     });
 }
 
-
+module.exports.insertLike  = insertLike;
 //Dislike
