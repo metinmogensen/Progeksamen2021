@@ -1,5 +1,6 @@
 
 <template>
+<section>
     <div class="container">
       <h1>Login</h1>
         <h1>{{ LOGIN }}</h1>
@@ -31,6 +32,7 @@
         <div>Login som admin? <router-link to="/SpecialLogin">ADMIN</router-link></div>
       </form>
     </div>
+    </section>
 </template>
 
 <script>
@@ -75,6 +77,5 @@ export default {
 
 
 </script>
-
 
 

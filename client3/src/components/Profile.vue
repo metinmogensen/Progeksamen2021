@@ -148,13 +148,14 @@ body{
 		display: flex;
 		flex-direction:column;
 		justify-content:center;
+    align-items:center;
     
 }
 
 section{
 	background-color: rgba(0, 0, 0, 0.72);
-	width:25%;
-	min-height:25%;
+	width:100%;
+	min-height:5%;
 	display:flex;
 	flex-direction:column;
 	/*margin-left:auto;
@@ -269,4 +270,5 @@ p{
 	margin-right:auto;
   text-align: center;
 }
+
 </style>
