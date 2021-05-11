@@ -19,7 +19,7 @@
           />
           
           <button class="btn btn-primary btn-block btn-lg">Delete</button>
-        <div>Delete din bruger <router-link to="/login">tilbage til loing</router-link></div>
+        <div>Vil du alligevel ikke slette din profil? <router-link to="/login">Tilbage til forsiden</router-link></div>
       </form>
     </div>
   </div>

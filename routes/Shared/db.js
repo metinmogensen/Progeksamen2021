@@ -109,12 +109,14 @@ function login (payload) {
 
 module.exports.login = login;
 
+// 
 function genToken(payload){
     user = {email:payload.email, password:payload.password};
     token = jwt.sign(user,"secretkey")
     return token
 }
 module.exports.genToken = genToken;
+
 
 function vertifyToken(payload){
     return new Promise((resolve, reject) => {
