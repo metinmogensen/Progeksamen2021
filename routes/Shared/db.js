@@ -491,7 +491,7 @@ function deleteMatch(payload){
 module.exports.deleteMatch  = deleteMatch;
 
 //Like
-function insert(payload){
+function insertLike(payload){
     return new Promise((resolve, reject) => {
         const sql = `INSERT INTO [like] (likeOrDislike, userId, likedUserId) VALUES(@likeOrDislike, @userId, @likedUserId)`
         const request = new Request(sql,(err) => {
