@@ -31,7 +31,7 @@
         <form @submit.prevent="onSubmit">
         
         <div class="form-group">
-          
+             <button class="btn btn-primary btn-block btn-lg">SWIPE LØØØS</button>
         </div>
         <div>Vil du opdatere din bruger?<router-link to="/updateUser">  Opdater  </router-link></div>
 
@@ -41,7 +41,7 @@
         <form @submit.prevent="LogOut">
         
         <div class="form-group">
-         
+            <button class="btn btn-primary btn-block btn-lg">SWIPE LØØØS</button>
         </div>
         <div>Vil du logge ud? <router-link to="/login">Logout</router-link></div>
 
