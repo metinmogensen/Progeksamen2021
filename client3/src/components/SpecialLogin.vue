@@ -53,7 +53,7 @@ export default {
           if (response.status == 200) {
            localStorage.setItem("token", response.data.token);
             alert("Now login after u clicked OK!")
-            this.$router.push({ path : '/adminHomepage' });
+            this.$router.push({ path : '/SpecialHomepage' });
           }
           
         })

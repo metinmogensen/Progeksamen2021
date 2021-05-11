@@ -61,8 +61,8 @@
         <h1>Opdater LastName på en bruger: </h1>
           <input
             type="text"
-            id="LastName"
-            v-model="LastName"
+            id="lastName"
+            v-model="lastName"
             placeholder="LastName"
             class="form-control"
           />
@@ -93,10 +93,10 @@
           />
           <button class="btn btn-primary btn-block btn-lg">Update</button>
       </form>
-      <form @submit.prevent="updateHotel">
+      <form @submit.prevent="updateAge">
         <h1>Opdater en brugers alder: </h1>
           <input
-            type="int"
+            type="text"
             id="age"
             v-model="age"
             placeholder="Age"
@@ -111,7 +111,7 @@
           />
           <button class="btn btn-primary btn-block btn-lg">Update</button>
       </form>
-      <form @submit.prevent="updateHotel">
+      <form @submit.prevent="updatePreferredGender">
         <h1>Opdater en brugers preferred Gender: </h1>
           <input
             type="text"

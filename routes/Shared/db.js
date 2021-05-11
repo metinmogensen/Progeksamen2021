@@ -1,4 +1,4 @@
-const { Connection, Request, TYPES } = require('tedious');
+const { Connection, Request, TYPES } = require('tedious'); //Loading the Tedious package that we use to connect to our SQL database
 const config = require('../../config.json');
 var jwt = require('jsonwebtoken')
 
@@ -28,11 +28,11 @@ module.exports.sqlConnection  = connection;
 //CREATE USER
 function insert(payload){
     return new Promise((resolve, reject) => {
-        const sql = `INSERT INTO [user] (firstName, lastName, gender, email, password, age, hotel, preferredGender) VALUES(@firstName, @lastName, @gender, @email, @password, @age, @hotel, @preferredGender)`
+        const sql = `INSERT INTO [user] (firstName, lastName, gender, email, password, age, hotel, preferredGender)VALUES(@firstName, @lastName, @gender, @email, @password, @age, @hotel, @preferredGender)`
         const request = new Request(sql,(err) => {
             if(err){
                 reject(err)
-                console.log(err)
+                console.log(err) // If an error occures it is logged in the console.
             }
 
         });
@@ -47,7 +47,7 @@ function insert(payload){
         request.addParameter('hotel',TYPES.VarChar,payload.hotel)
         request.addParameter('preferredGender',TYPES.VarChar,payload.preferredGender)
 
-        request.on("requestCompleted",(row) => {
+        request.on("requestCompleted",(row) => { //
             console.log("User inserted", row);
             resolve("user Inserted", row)
         })
@@ -382,8 +382,34 @@ function specialUpdateUserHotel(payload){
 
     });
 }
-
 module.exports.specialUpdateUserHotel  = specialUpdateUserHotel;
+
+//Admin delete user
+function specialDeleteUser(payload){
+    
+    return new Promise((resolve,reject) => {
+        const sql = "Delete FROM [user] where email = @email AND userId = @userId"
+        const request = new Request(sql,(err,rowcount) =>{
+            if (err){
+                reject(err)
+                console.log(err)
+            } else if( rowcount == 0){
+                reject({messsage:"user can't be deleted"})
+            }
+        });
+        request.addParameter('email',TYPES.VarChar, payload.email)
+        request.addParameter('userId',TYPES.VarChar, payload.userId)
+    
+        request.on('row',(colums) => {
+            resolve(colums)
+        });
+        connection.execSql(request);
+    
+    })
+}
+
+module.exports.specialDeleteUser  = specialDeleteUser;
+
 
 // Update User
 function updateUser(payload){
@@ -412,6 +438,7 @@ function updateUser(payload){
 
 module.exports.updateUser  = updateUser;
 
+//Deleting and user
 function deleteUser(payload){
     
     return new Promise((resolve,reject) => {
@@ -464,9 +491,9 @@ function deleteMatch(payload){
 module.exports.deleteMatch  = deleteMatch;
 
 //Like
-function insert(payload){
+function insertLike(payload){
     return new Promise((resolve, reject) => {
-        const sql = `INSERT INTO [like] (likeOrDislike, userId, likedUserId) VALUES(@likeOrDislike, @userId, @likedUserId)`
+        const sql = `INSERT INTO [like] (likeOrDislike, userId, likedUserId) VALUES('like', @userId, @likedUserId)`
         const request = new Request(sql,(err) => {
             if(err){
                 reject(err)
@@ -485,6 +512,27 @@ function insert(payload){
 
     });
 }
-
-
+module.exports.insertLike  = insertLike;
 //Dislike
+function insertDislike(payload){
+    return new Promise((resolve, reject) => {
+        const sql = `INSERT INTO [like] (likeOrDislike, userId, likedUserId) VALUES('dislike', @userId, @likedUserId)`
+        const request = new Request(sql,(err) => {
+            if(err){
+                reject(err)
+                console.log(err)
+            }
+
+        });
+        request.addParameter('likeOrDislike',TYPES.VarChar,payload.likeOrDislike)
+        request.addParameter('userId',TYPES.VarChar,payload.userId)
+        request.addParameter('likedUserId',TYPES.VarChar,payload.likedUserId)
+        request.on("requestCompleted",(row) => {
+            console.log("Dislike inserted", row);
+            resolve("dislike Inserted", row)
+        })
+        connection.execSql(request);
+
+    });
+}
+module.exports.insertDislike  = insertDislike;
