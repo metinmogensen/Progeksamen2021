@@ -1,7 +1,9 @@
+
 <template>
     <div>
         <h2>Login</h2>
         <form @submit.prevent="onSubmit">
+
         <div class="form-group">
           <input
             type="email"
@@ -11,6 +13,7 @@
             class="form-control"
           />
         </div>
+
         <div class="form-group">
           <input
             type="password"
@@ -30,6 +33,7 @@
 </template>
 
 <script>
+
 import axios from "axios";
 
 export default {

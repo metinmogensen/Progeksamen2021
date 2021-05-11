@@ -2,20 +2,27 @@
 
 <template>
     <div>
+      <div class="h1">
         <h1>Tillykke!</h1>
+      </div>
+      <div class="p">
         <p>Du er ankommet til Hoetell 2021. </p>
+      </div>
+      <div class="h3">
         <h3>Her kan du bolle med alle andre end din dame :')</h3>
-       
+       </div>
    
     
-
+<div></div>
+        <div class="h2">
         <h2>SWIPE LØØØS</h2>
+        </div>
         <form @submit.prevent="onSubmit">
         
         <div class="form-group">
           <button class="btn btn-primary btn-block btn-lg">SWIPE LØØØS</button>
         </div>
-        <div>Vil du swipe løøøs? <router-link to="/swipe">Swipe</router-link></div>
+        <div class="swipe">Vil du swipe løøøs? <router-link to="/swipe">Swipe</router-link></div>
 
       </form>
 
@@ -126,3 +133,28 @@ export default {
 }
 
 </script>
+
+<style >
+.h1 {
+  padding-left: 400px;
+  align-items: center;
+  background-color: rgb(0, 255, 0);
+}
+
+.p{
+padding-left: 367px;
+align-items: center;
+}
+
+.h3{
+padding-left: 280px;
+align-items: center;
+}
+
+.h2{
+padding-left: 367px;
+align-items: center;
+}
+
+
+</style>
