@@ -1,5 +1,7 @@
 <template>
   <div>
+    <div class="welcome"><h2>Wellcome to the best dating app </h2></div>
+
     <div class="container">
       <div id="errorbox" style="color: red"></div><br>
       <form @submit.prevent="onSubmit">
@@ -106,3 +108,17 @@ export default {
   },
 };
 </script>
+
+<style >
+.container {
+  padding: 250px;
+  align-items: center;
+}
+
+.welcome{
+border-left: 404px;
+align-items: center;
+}
+
+
+</style>

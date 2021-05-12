@@ -1,4 +1,5 @@
 <template>
+<section>
     <div>
         <h1>ADMIN HOMEPAGE</h1>
         <p></p>
@@ -24,7 +25,7 @@
         </div>
         <form>
 
-        <div>VIL DU OPDATERE EN BRUGERS EMAIL?<router-link to="/SpecialUpdateUser"> OPDATER HER</router-link></div>
+        <div>VIL DU OPDATERE EN BRUGER?<router-link to="/SpecialUpdateUser"> OPDATER HER</router-link></div>
         
         </form>
       </form>
@@ -50,7 +51,7 @@
 
      </div>
     
-
+</section>
 </template>
 
 <script>
