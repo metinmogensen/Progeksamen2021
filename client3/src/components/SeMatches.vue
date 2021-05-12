@@ -1,5 +1,3 @@
-
-
 <template>
 <section v-bind:class="isShake">
     <div>
@@ -15,59 +13,18 @@
    
     
 <div></div>
-        <div class="h2">
-        <h2>SWIPE// Find din nye bedste ven</h2>
+         <div class="h2">
+        <h2>Er du alligevel ikke frisk på at mødes? Nu har det aldrig været nemmere at slette sine matches.</h2>
         </div>
         <form @submit.prevent="onSubmit">
         
         <div class="form-group">
-          <button class="btn btn-primary btn-block btn-lg" ><router-link to="/swipe">SWIPE LØS</router-link> </button>
+          <button class="btn btn-primary btn-block btn-lg" ><router-link to="/DeleteMatch">Gå til slet matches</router-link> </button>
         </div>
       
 
       </form>
-
-        <h2>UPDATE// 
-          Vil du opdatere din bruger?
-        </h2>
-        <form @submit.prevent="onSubmit">
-        
-        <div class="form-group">
-             <button class="btn btn-primary btn-block btn-lg"><router-link to="/updateUser">  OPDATER  </router-link></button>
-        </div>
-       
-
-      </form>
-
-       <h2>SE MATCHES</h2>
-        <form @submit.prevent="LogOut">
-        
-        <div class="form-group">
-            <button class="btn btn-primary btn-block btn-lg"><router-link to="/seMatches">SE MATCH</router-link></button>
-        </div>
-        
-
-      </form>
-
-        <h2>LOGOUT</h2>
-        <form @submit.prevent="LogOut">
-        
-        <div class="form-group">
-            <button class="btn btn-primary btn-block btn-lg"><router-link to="/login">LOGOUT</router-link></button>
-        </div>
-        
-
-      </form>
-
-      <h2>DELETE BRUGER</h2>
-        <form @submit.prevent="Delete">
-        
-        <div class="form-group">
-          <button @submit.prevent="deleteUser()"><router-link to="/deleteUser">DELTE USER</router-link></button>
-        </div>
     
-
-      </form>
 
      </div>
     

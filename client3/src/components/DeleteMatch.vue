@@ -1,25 +1,30 @@
 <template>
   <div>
+
+       
+
     <div class="container">
       <div id="errorbox" style="color: red"></div><br>
+
+      <div><h1>Var I ikke et match alligevel?</h1>
+          <h2>Nu har det aldrig været nemmere at slette sit match</h2>
+          <h2>Alt du skal er, at skrive matchId'et ind og voila, du kan forstsætte søgningen</h2>
+       </div>
       <form @submit.prevent="onSubmit">
           <input
-            type="email"
-            id="email"
-            v-model="email"
-            placeholder="E-mail"
+            type="matchId"
+            id="matchId"
+            v-model="matchId"
+            placeholder="matchId"
             class="form-control"
           />
-          <input
-            type="password"
-            id="password"
-            v-model="password"
-            placeholder="Password"
-            class="form-control"
-          />
-          
+    
+         
+
           <button class="btn btn-primary btn-block btn-lg">Delete Match</button>
-        <div>Vil du alligevel ikke slette din profil? <router-link to="/login">Tilbage til forsiden</router-link></div>
+        <div>Vil du alligevel ikke slette et match alligevel? <router-link to="/profile">Tilbage til forsiden</router-link></div>
+
+        <div>Uha, kan du ikke lige huske matchID'et? Tryk her og se dine matches: <router-link to="/SeMatches">Se matches</router-link></div>
       </form>
     </div>
   </div>
@@ -28,26 +33,25 @@
 <script>
 import axios from "axios";
 export default {
-  name: 'DeleteUser',
+  name: 'DeleteMatch',
   data() {
     return {
-      email: "",
-      password: "",
+      matchId: "",
     };
   },
   methods: {
     onSubmit() {
       axios
         .delete("http://localhost:7071/api/deleteMatch", {
-          email: this.email,
-          password: this.password,
+          matchId: this.matchId,
+          
         })
         .then((response) => {
 
           //redirect logic
           if (response.status == 200) {
-            alert("Du har nu slettet din bruger, klik OK!")
-            this.$router.push({ path : '/login' });
+            alert("Du har nu slettet dit match, klik OK!")
+            this.$router.push({ path : '/profile' });
           }
           
         })

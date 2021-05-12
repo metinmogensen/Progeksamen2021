@@ -3,7 +3,7 @@
     
 
     <div class="container">
-      <div><h2>Wellcome to the best dating app </h2>
+      <div><h1>Wellcome to SOTELL 2021 </h1>
     </div>
       <div id="errorbox" style="color: red"></div><br>
       <form @submit.prevent="onSubmit">
