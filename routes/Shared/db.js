@@ -440,7 +440,7 @@ function updateUser(payload){
 
 module.exports.updateUser  = updateUser;
 
-//Deleting and user
+//Delete user
 function deleteUser(payload){
     
     return new Promise((resolve,reject) => {

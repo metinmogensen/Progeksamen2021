@@ -68,7 +68,7 @@ export default new Router({
             component: DeleteUser
         },
         {
-            path: '/deleteMatch',
+            path: '/DeleteMatch',
             name: 'DeleteMatch',
             component: DeleteMatch
         }, 

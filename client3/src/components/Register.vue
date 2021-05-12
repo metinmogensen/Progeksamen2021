@@ -57,6 +57,16 @@
             placeholder="Hotel"
             class="form-control"
           />
+          <input
+            type="text"
+            placeholder="Min age"
+            class="form-control"
+          />
+          <input
+            type="text"
+            placeholder="Max age"
+            class="form-control"
+          />
           <button class="btn btn-primary btn-block btn-lg">Register</button>
         <div>Allerede en bruger? <router-link to="/login">Login</router-link></div>
       </form>

@@ -80,7 +80,7 @@
 
 
 
-// import { response } from 'express';
+// import { response } from 'express'
 
 
 
@@ -147,7 +147,7 @@ export default {
 
 </script>
 
-<style >
+<style>
 html, body{
 	width:100%;
 	height:100%;
@@ -235,7 +235,7 @@ button:hover{
 	background-color:#711f1b;
 }
 
-@-webkit-keyframes shake{
+@-webkit-key-frames shake{
 	from, to{
 		-webkit-transform: translate3d(0, 0, 0);
 		transform:translate3d(0,0,0);
