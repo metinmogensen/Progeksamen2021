@@ -10,6 +10,8 @@ import SpecialLogin from '@/components/SpecialLogin'
 import SpecialHomepage from '@/components/SpecialHomepage'
 import SpecialUpdateUser from '@/components/SpecialUpdateUser'
 import SpecialDeleteUser from '@/components/SpecialDeleteUser'
+import DeleteMatch from '@/components/DeleteMatch'
+import SeMatches from '@/components/SeMatches'
 
 Vue.use(Router)
 
@@ -64,7 +66,17 @@ export default new Router({
             path: '/deleteUser',
             name: 'DeleteUser',
             component: DeleteUser
-        }
+        },
+        {
+            path: '/deleteMatch',
+            name: 'DeleteMatch',
+            component: DeleteMatch
+        }, 
+        {
+            path: '/SeMatches',
+            name: 'SeMatches',
+            component: SeMatches
+        }, 
 
     ]
     

@@ -83,7 +83,7 @@ export default {
   methods: {
     onSubmit() {
       axios
-        .post("http://127.0.0.1:7071/api/register2/", {
+        .get("http://127.0.0.1:7071/api/register2/", {
           firstName: this.firstName,
           lastName: this.lastName,
           gender: this.gender,

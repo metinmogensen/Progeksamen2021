@@ -7,7 +7,7 @@
         <h1>Tillykke!</h1>
 
 
-        <p>Du er ankommet til Hoetell 2021. </p>
+        <p>Du er ankommet til SOTELL 2021 </p>
 
 
 <p></p>
@@ -16,44 +16,56 @@
     
 <div></div>
         <div class="h2">
-        <h2>SWIPE LØØØS</h2>
+        <h2>SWIPE// Find din nye bedste ven</h2>
         </div>
         <form @submit.prevent="onSubmit">
         
         <div class="form-group">
-          <button class="btn btn-primary btn-block btn-lg">SWIPE LØØØS</button>
+          <button class="btn btn-primary btn-block btn-lg" ><router-link to="/swipe">SWIPE LØS</router-link> </button>
         </div>
-        <div class="swipe">Vil du swipe løøøs? <router-link to="/swipe">Swipe</router-link></div>
+      
 
       </form>
 
-        <h2>UPDATE</h2>
+        <h2>UPDATE// 
+          Vil du opdatere din bruger?
+        </h2>
         <form @submit.prevent="onSubmit">
         
         <div class="form-group">
-             <button class="btn btn-primary btn-block btn-lg">SWIPE LØØØS</button>
+             <button class="btn btn-primary btn-block btn-lg"><router-link to="/updateUser">  OPDATER  </router-link></button>
         </div>
-        <div>Vil du opdatere din bruger?<router-link to="/updateUser">  Opdater  </router-link></div>
+       
 
       </form>
 
-        <h2>LogOut</h2>
+       <h2>SE MATCHES</h2>
         <form @submit.prevent="LogOut">
         
         <div class="form-group">
-            <button class="btn btn-primary btn-block btn-lg">SWIPE LØØØS</button>
+            <button class="btn btn-primary btn-block btn-lg"><router-link to="/seMatches">SE MATCH</router-link></button>
         </div>
-        <div>Vil du logge ud? <router-link to="/login">Logout</router-link></div>
+        
 
       </form>
 
-      <h2>Delete User</h2>
+        <h2>LOGOUT</h2>
+        <form @submit.prevent="LogOut">
+        
+        <div class="form-group">
+            <button class="btn btn-primary btn-block btn-lg"><router-link to="/login">LOGOUT</router-link></button>
+        </div>
+        
+
+      </form>
+
+      <h2>DELETE BRUGER</h2>
         <form @submit.prevent="Delete">
         
         <div class="form-group">
-          <button @submit.prevent="deleteUser()">delete user</button>
+          <button @submit.prevent="deleteUser()"><router-link to="/deleteUser">DELTE USER</router-link></button>
         </div>
-        <div>Vil du delete din user? <router-link to="/deleteUser">Delete</router-link></div>
+    
 
       </form>
 
