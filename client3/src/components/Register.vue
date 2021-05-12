@@ -1,8 +1,10 @@
 <template>
   <div>
-    <div class="welcome"><h2>Wellcome to the best dating app </h2></div>
+    
 
     <div class="container">
+      <div><h2>Wellcome to the best dating app </h2>
+    </div>
       <div id="errorbox" style="color: red"></div><br>
       <form @submit.prevent="onSubmit">
           <input
@@ -115,10 +117,6 @@ export default {
   align-items: center;
 }
 
-.welcome{
-border-left: 404px;
-align-items: center;
-}
 
 
 </style>
