@@ -1,243 +1,122 @@
 <template>
-<section v-bind:class="isShake">
-    <div>
-
-        <h1>Tillykke!</h1>
-
-
-        <p>Du er ankommet til SOTELL 2021 </p>
-
-
-<p></p>
-
-   
+  <div>
     
-<div></div>
-         <div class="h2">
-        <h2>Er du alligevel ikke frisk på at mødes? Nu har det aldrig været nemmere at slette sine matches.</h2>
-        </div>
-        <form @submit.prevent="onSubmit">
-        
-        <div class="form-group">
-          <button class="btn btn-primary btn-block btn-lg" ><router-link to="/DeleteMatch">Gå til slet matches</router-link> </button>
-        </div>
-      
 
+    <div class="container">
+      <div><h1>Wellcome to SOTELL 2021 </h1>
+    </div>
+      <div id="errorbox" style="color: red"></div><br>
+      <form @submit.prevent="onSubmit">
+          <input
+            type="email"
+            id="email"
+            v-model="email"
+            placeholder="E-mail"
+            class="form-control"
+          />
+          <input
+            type="password"
+            id="password"
+            v-model="password"
+            placeholder="Password"
+            class="form-control"
+          />
+          <input
+            type="text"
+            v-model="firstName"
+            placeholder="Fornavn"
+            class="form-control"
+          />
+          <input
+            type="text"
+            v-model="lastName"
+            placeholder="Efternavn"
+            class="form-control"
+          />
+          <input
+            type="number"
+            v-model="age"
+            placeholder="Alder"
+            class="form-control"
+          />
+          <input
+            type="text"
+            v-model="gender"
+            placeholder="Køn"
+            class="form-control"
+          />
+          <input
+            type="text"
+            v-model="preferredGender"
+            placeholder="Hvem foretrækker du"
+            class="form-control"
+          />
+          <input
+            type="text"
+            v-model="hotel"
+            placeholder="Hotel"
+            class="form-control"
+          />
+          <button class="btn btn-primary btn-block btn-lg">Register</button>
+        <div>Allerede en bruger? <router-link to="/login">Login</router-link></div>
       </form>
-    
-
-     </div>
-    
-</section>
+    </div>
+  </div>
 </template>
 
 <script>
-
-
-
-
-
-// import { response } from 'express';
-
-
-
-// export default {
-//   name: 'Logout', 
-//   data() {
-//     return {
-//       email: ""
-//     };
-//   },
-//   methods: {
-//     logOut() {
-//       axios.post("http://127.0.0.1:7071/api/login/"), {
-//         email: this.email,
-//       })
-//       .then ((response)) => {
-        
-//       return new Promise((resolve, reject) => {
-//         localStorage.removeItem("email");
-//       });
-//     }
-//   }
-// };
-
-// new Vue({
-// el: '#app',
-// data: { 
-//     myLocalData: localStorage.getItem('email')
-//   },
-  
-//    methods:{
-//      logOut: function () {	
-// 		 localStorage.removeItem('email');
-//      this.myLocalData = localStorage.getItem('email');
-       
-//     }
-//    }
-
-// });
-
-import axios from 'axios';
+import axios from "axios";
 export default {
-  
-  name: 'Home',
-
-  created() {
-    let token = localStorage.getItem('token')
-       axios
-        .post("http://127.0.0.1:7071/api/Iprotect/", {
-        token: token
+  name: 'Register',
+  data() {
+    return {
+      firstName: "",
+      lastName: "",
+      gender: "",
+      email: "",
+      password: "",
+      age: "",
+      hotel: "",
+      preferredGender: "",
+    };
+  },
+  methods: {
+    onSubmit() {
+      axios
+        .get("http://127.0.0.1:7071/api/register2/", {
+          firstName: this.firstName,
+          lastName: this.lastName,
+          gender: this.gender,
+          email: this.email,
+          password: this.password,
+          age: this.age,
+          hotel: this.hotel,
+          preferredGender: this.preferredGender
         })
         .then((response) => {
-          console.log(response);
+
+          //redirect logic
+          if (response.status == 200) {
+            alert("Du er blevet oprettet i vores database, klik OK!")
+            this.$router.push({ path : '/login' });
+          }
           
         })
         .catch((error) => {
-                      alert("login again")
-          this.$router.push({ path : '/login' });
+          document.getElementById("errorbox").innerHTML = "Fejl."
           console.log(error);
         });
-    
-    }
-}
-
+    },
+  },
+};
 </script>
 
 <style >
-html, body{
-	width:100%;
-	height:100%;
-	margin:0px;
-	font-family: 'Work Sans', sans-serif;
+.container {
+  padding: 250px;
+  align-items: center;
 }
 
-body{
-		background-image:url('https://images-assets.nasa.gov/image/6900952/6900952~orig.jpg');
-		display: flex;
-		flex-direction:column;
-		justify-content:center;
-    align-items:center;
-    
-}
 
-section{
-	background-color: rgba(0, 0, 0, 0.72);
-	width:100%;
-	min-height:5%;
-	display:flex;
-	flex-direction:column;
-	/*margin-left:auto;
-	margin-right:auto;*/
-  
-}
-form{
-	display:flex;
-	flex-direction:column;
-	padding: 15px; 
-  text-align: center;
-}
-h2{
-	font-family: 'Archivo Black', sans-serif;
-	color:#e0dada;
-	margin-left:auto;
-	margin-right:auto;
-  text-align: center;
-}
-
-.info{
-	width:100%;
-	text-align:center;
-	min-height:45px;
-	display:flex;
-	flex-direction:column;
-	justify-content:center;
-	align-items:center;
-}
-
-.info.error{
-	border:1px solid #416d50;
-	background-color: #ff3c41;
-	color:#e0dada;
-}
-.info p{
-	margin:auto;
-	padding:5px;
-}
-.info.good{
-	border:1px solid #416d50;
-	background-color: #47cf73;
-	color:#416d50;
-}
-
-input{
-	height:35px;
-	padding: 5px 5px;
-	margin: 10px 0px;
-	background-color:#e0dada;
-	border:none;
-}
-button{
-	height:40px;
-	padding: 5px 5px;
-	margin: 10px 0px;
-	font-weight:bold;
-	background-color:#be5256;
-	border:none;
-	color:#e0dada;
-	cursor:pointer;
-	font-size:16px;
-}
-button:hover{
-	background-color:#711f1b;
-}
-
-@-webkit-keyframes shake{
-	from, to{
-		-webkit-transform: translate3d(0, 0, 0);
-		transform:translate3d(0,0,0);
-	}
-	10%,30%,50%,70%,90%{
-		-webkit-transform: translate3d(-10px, 0, 0);
-		transform:translate3d(-10px,0,0);
-	}
-	20%,40%,60%,80%{
-		-webkit-transform: translate3d(10px, 0, 0);
-		transform:translate(10px,0,0);
-	}
-}
-
-.shake{
-	animation-name: shake;
-	animation-duration:1s;
-	/*animation-fill-mode: both;*/
-}
-
-@media screen and (max-width: 780px) {
-	section{
-		width:90%;
-	}
-}
-h1{
-	font-family: 'Archivo Black', sans-serif;
-	color:#b18d8d;
-	margin-left:auto;
-	margin-right:auto;
-  text-align: center;
-}
-h3{
-	font-family: 'Archivo Black', sans-serif;
-	color:#e0dada;
-	margin-left:auto;
-	margin-right:auto;
-  text-align: center;
-}
-p{
-	font-family: 'Archivo Black', sans-serif;
-	color:#e0dada;
-	margin-left:auto;
-	margin-right:auto;
-  text-align: center;
-}
 
 </style>

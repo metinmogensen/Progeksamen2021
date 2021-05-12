@@ -46,3 +46,39 @@ export default {
   },
 };
 </script>
+
+
+<template>
+<section v-bind:class="isShake">
+    <div>
+
+        <h1>Tillykke!</h1>
+
+
+        <p>Du er ankommet til SOTELL 2021 </p>
+
+
+<p></p>
+
+   
+    
+<div></div>
+         <div class="h2">
+        <h2>Er du alligevel ikke frisk på at mødes? Nu har det aldrig været nemmere at slette sine matches.</h2>
+        </div>
+        <form @submit.prevent="onSubmit">
+        
+        <div class="form-group">
+          <button class="btn btn-primary btn-block btn-lg" ><router-link to="/DeleteMatch">Gå til slet matches</router-link> </button>
+        </div>
+      
+
+      </form>
+    
+
+     </div>
+    
+</section>
+</template>
+
+<script>
