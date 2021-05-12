@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h2>Like personen</h2>
+        <h1>Like personen</h1>
         <form @submit.prevent="onSubmit"> 
         
         <div class="form-group">
