@@ -538,3 +538,30 @@ function insertDislike(payload){
     });
 }
 module.exports.insertDislike  = insertDislike;
+
+//Matchlist
+function matchList(userId1){
+    return new Promise((resolve,reject) => {
+        const sql = "SELECT userId1, userId2, firstname, lastname FROM match INNER JOIN [user] u on u.userId = match.userId2 WHERE userId1 = @userId1"
+        const request = new Request(sql,(err,rowcount) =>{
+            if (err){
+                reject(err)
+                console.log(err)
+            } else if( rowcount == 0){
+                reject({messsage:"match does not exist"})
+            }
+        });
+        request.addParameter('userId1',TYPES.Int,userId1)
+    
+        request.on('row',(colums) => {
+            resolve(colums)
+        });
+        connection.execSql(request);
+    
+        return matchList
+    })
+  
+}
+module.exports.matchList = matchList;
+
+
