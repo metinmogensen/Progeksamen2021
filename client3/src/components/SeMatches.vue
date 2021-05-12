@@ -1,64 +1,38 @@
+
 <template>
   <div>
     
 
     <div class="container">
-      <div><h1>Wellcome to SOTELL 2021 </h1>
+      <div><h1>Wellcome to SOTELL 2021:  </h1>
+      <h2>Her kan du se dine matches </h2>
     </div>
       <div id="errorbox" style="color: red"></div><br>
       <form @submit.prevent="onSubmit">
-          <input
-            type="email"
-            id="email"
-            v-model="email"
-            placeholder="E-mail"
-            class="form-control"
-          />
-          <input
-            type="password"
-            id="password"
-            v-model="password"
-            placeholder="Password"
-            class="form-control"
-          />
-          <input
-            type="text"
-            v-model="firstName"
-            placeholder="Fornavn"
-            class="form-control"
-          />
-          <input
-            type="text"
-            v-model="lastName"
-            placeholder="Efternavn"
-            class="form-control"
-          />
-          <input
-            type="number"
-            v-model="age"
-            placeholder="Alder"
-            class="form-control"
-          />
-          <input
-            type="text"
-            v-model="gender"
-            placeholder="Køn"
-            class="form-control"
-          />
-          <input
-            type="text"
-            v-model="preferredGender"
-            placeholder="Hvem foretrækker du"
-            class="form-control"
-          />
-          <input
-            type="text"
-            v-model="hotel"
-            placeholder="Hotel"
-            class="form-control"
-          />
-          <button class="btn btn-primary btn-block btn-lg">Register</button>
-        <div>Allerede en bruger? <router-link to="/login">Login</router-link></div>
+          <table>
+<thead>
+                        <tr>
+                          <th>FirstName</th>
+                          <th>LastName</th>
+                          <th>MatchId</th>
+
+                        </tr>
+                      </thead>
+                      <tbody>
+                    
+                        <td> Mikkel </td>
+                        <td> Rolf </td>
+                        <td> 7 </td>
+                        <td></td>
+                        <td></td>
+                        
+                      </tbody>
+                </table>
+
+          
+          
+         <br> <br> 
+        <div>Ser du noget, du ikke kan lide? <router-link to="/DeleteMatch">Slet Match</router-link></div>
       </form>
     </div>
   </div>
@@ -83,7 +57,7 @@ export default {
   methods: {
     onSubmit() {
       axios
-        .get("http://127.0.0.1:7071/api/register2/", {
+        .post("http://127.0.0.1:7071/api/register2/", {
           firstName: this.firstName,
           lastName: this.lastName,
           gender: this.gender,
@@ -120,3 +94,4 @@ export default {
 
 
 </style>
+
